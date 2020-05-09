@@ -10,14 +10,18 @@ export default class AddDeck extends Component {
   render (){
     return (
       <View>
-        <Text style={styles.text}>
-        What is the title on your deck?
-        </Text>
-        <TextInput
-        style={styles.input}
-        placeholder="Deck Name"
+          <Text style= {styles.cardName}>
+          Card
+          </Text>
 
-      />
+          <TextInput
+          style={styles.input}
+          placeholder="type your // QUESTION: "
+        />
+
+
+
+
       <TouchableOpacity
       style={styles.submitButton}>
       <Text style = { styles.submitButtonText}> Submit </Text>
@@ -41,7 +45,15 @@ const styles = StyleSheet.create({
      marginTop: 150,
 
    },
-   
+   cardName : {
+     margin: 15,
+     marginLeft: 30,
+     height: 40,
+     fontSize: 20,
+     marginTop: 30,
+   },
+
+
    input: {
       margin: 20,
       height: 40,
