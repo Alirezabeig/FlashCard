@@ -11,7 +11,7 @@ export default class DeckList extends Component {
     return (
       <View>
           <Text style= {styles.cardName}>
-          DeckList // .map the deck
+          DeckList // .map the deck.js
           </Text>
 
 

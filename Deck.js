@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
-import {View, Text, TextInput, StyleSheet, TouchableOpacity} from 'react-native'
+import {View, Text, TextInput, StyleSheet, Button, TouchableOpacity} from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import App from './app'
 //import {} from './utils/helper'
 
 
+AddCard = ()=> {
+
+}
+
+
+StartQuiz=()=> {
+
+}
+
+Remove =() => {
+}
 
 const Stack = createStackNavigator();
 
@@ -16,29 +27,36 @@ export default class AddDeck extends Component {
     return (
 
       <View>
-          
 
 
-          <Text style= {styles.deckName}>
+
+        <Text style= {styles.deckName}>
           Deck Name
-          </Text>
+        </Text>
 
         <Text style={styles.text}>
-        Number of cards
+          Number of cards
         </Text>
 
 
       <TouchableOpacity
-      style={styles.submitButton}>
+      style={styles.submitButton}
+      onPress={this.AddCard}>
       <Text style = { styles.submitButtonText}> Add Card </Text>
-
       </TouchableOpacity>
 
       <TouchableOpacity
-      style={styles.submitButton}>
+      style={styles.submitButton}
+      onPres={this.StartQuiz}>
       <Text style = { styles.submitButtonText}> Start Quiz </Text>
-
       </TouchableOpacity>
+
+      <Button
+          title="Delete Deck"
+          onPress={this.remove}
+        />
+
+
 
 
 

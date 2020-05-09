@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import {View, Text, TextInput, StyleSheet, TouchableOpacity} from 'react-native'
 //import {} from './utils/helper'
 
+Submit = () => {
+
+}
+
 
 export default class AddDeck extends Component {
-
-
 
   render (){
     return (
@@ -15,13 +17,14 @@ export default class AddDeck extends Component {
         </Text>
         <TextInput
         style={styles.input}
-        placeholder=" Deck Name"
+        placeholder="    Enter Deck Name"
 
       />
       <TouchableOpacity
-      style={styles.submitButton}>
-      <Text style = { styles.submitButtonText}> Submit </Text>
+      style={styles.submitButton}
+      onPress= {this.Submit}>
 
+      <Text style = { styles.submitButtonText}> Submit </Text>
       </TouchableOpacity>
 
       </View>

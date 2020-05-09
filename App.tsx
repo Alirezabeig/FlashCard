@@ -85,6 +85,7 @@ export default function App() {
                 <MaterialCommunityIcons name="plus" color={color} size={size} />
               ),
             }}  />
+            <Tab.Screen name="Deck" component={DeckScreen}/>
 
           </Tab.Navigator>
         </NavigationContainer>
