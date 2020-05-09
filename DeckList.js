@@ -3,26 +3,23 @@ import {View, Text, TextInput, StyleSheet, TouchableOpacity} from 'react-native'
 //import {} from './utils/helper'
 
 
-export default class AddDeck extends Component {
+export default class DeckList extends Component {
 
 
 
   render (){
     return (
       <View>
-        <Text style={styles.text}>
-        What is the title on your deck?
-        </Text>
-        <TextInput
-        style={styles.input}
-        placeholder=" Deck Name"
+          <Text style= {styles.cardName}>
+          DeckList // .map the deck
+          </Text>
 
-      />
-      <TouchableOpacity
-      style={styles.submitButton}>
-      <Text style = { styles.submitButtonText}> Submit </Text>
 
-      </TouchableOpacity>
+
+
+
+
+
 
       </View>
     )
@@ -41,27 +38,46 @@ const styles = StyleSheet.create({
      marginTop: 150,
 
    },
+   cardName : {
+     margin: 15,
+     marginLeft: 30,
+     height: 40,
+     fontSize: 20,
+     marginTop: 30,
+   },
+
 
    input: {
       margin: 20,
-      height: 50,
+      height: 40,
       borderColor: '#7a42f4',
-      borderWidth: 1,
-
-      borderRadius:20,
+      borderWidth: 1
 
    },
-   submitButton: {
+   submitButtonCorrect: {
 
-      backgroundColor: '#7a42f4',
+      backgroundColor:'#32cd32',
       padding: 15,
-      margin: 25,
+      width: 320,
+      marginLeft: 25,
+
       height: 50,
       borderRadius:20,
    },
+
+   submitButtonIncorrect:{
+     backgroundColor:'#800000',
+     margin:20,
+     padding: 15,
+     width: 320,
+     marginLeft: 25,
+     height: 50,
+     borderRadius:20,
+   },
+
    submitButtonText:{
       color: 'white',
-      marginLeft: 120,
+      marginLeft: 115,
       justifyContent : "center",
    }
 });

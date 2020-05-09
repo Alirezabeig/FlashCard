@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
 import {View, Text, TextInput, StyleSheet, TouchableOpacity} from 'react-native'
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import App from './app'
 //import {} from './utils/helper'
 
 
+
+const Stack = createStackNavigator();
+
+
+
 export default class AddDeck extends Component {
-
-
-
   render (){
     return (
+
       <View>
+          
+
+
           <Text style= {styles.deckName}>
           Deck Name
           </Text>
@@ -30,6 +39,8 @@ export default class AddDeck extends Component {
       <Text style = { styles.submitButtonText}> Start Quiz </Text>
 
       </TouchableOpacity>
+
+
 
       </View>
     )
@@ -55,6 +66,7 @@ const styles = StyleSheet.create({
      fontSize: 15,
      marginTop: 10,
      opacity: .5,
+     borderRadius:20,
 
    },
 
@@ -64,6 +76,7 @@ const styles = StyleSheet.create({
       padding: 15,
       margin: 15,
       height: 50,
+      borderRadius:20,
    },
    submitButtonText:{
       color: 'white',

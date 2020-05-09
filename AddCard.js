@@ -11,12 +11,12 @@ export default class AddDeck extends Component {
     return (
       <View>
           <Text style= {styles.cardName}>
-          Card
+          Add Card
           </Text>
 
           <TextInput
           style={styles.input}
-          placeholder="type your // QUESTION: "
+          placeholder="  Type your question: "
         />
 
 
@@ -56,9 +56,10 @@ const styles = StyleSheet.create({
 
    input: {
       margin: 20,
-      height: 40,
+      height: 50,
       borderColor: '#7a42f4',
-      borderWidth: 1
+      borderWidth: 1,
+      borderRadius:20,
 
    },
    submitButton: {
@@ -67,6 +68,7 @@ const styles = StyleSheet.create({
       padding: 15,
       margin: 25,
       height: 50,
+      borderRadius:20,
    },
    submitButtonText:{
       color: 'white',
