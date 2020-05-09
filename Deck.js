@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text, TextInput, StyleSheet, Button, TouchableOpacity} from 'react-native'
+import {View, Text, TextInput, StyleSheet, Button, TouchableOpacity, KeyboardAvoidingView} from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import App from './app'
@@ -26,9 +26,14 @@ export default class AddDeck extends Component {
   render (){
     return (
 
+
       <View>
 
-
+      <KeyboardAvoidingView style={{
+              flex: 1,
+                justifyContent: 'center',
+                alignContent: 'center'
+              }}/>
 
         <Text style= {styles.deckName}>
           Deck Name

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text, TextInput, StyleSheet, TouchableOpacity} from 'react-native'
+import {View, Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView} from 'react-native'
 //import {} from './utils/helper'
 
 
@@ -10,6 +10,12 @@ export default class AddDeck extends Component {
   render (){
     return (
       <View>
+
+      <KeyboardAvoidingView style={{
+              flex: 1,
+                justifyContent: 'center',
+                alignContent: 'center'
+              }}/>
           <Text style= {styles.cardName}>
           Add Card
           </Text>

@@ -1,33 +1,59 @@
 import React, { Component } from 'react';
-import {View, Text, TextInput, StyleSheet, TouchableOpacity} from 'react-native'
+import {View, Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView} from 'react-native'
 //import {} from './utils/helper'
+import {saveDeckTitle} from './utils/api'
 
-Submit = () => {
-
-}
 
 
 export default class AddDeck extends Component {
 
+  state= {
+    titleText: '',
+  };
+
+
+
+  Submit = () => {
+    if (this.state.titleText) {
+      const {titleText} = this.state;
+      saveDeckTitle(titleText);
+      this.setState({
+       titleText: ''
+     });
+   }
+
+  };
+
+
   render (){
     return (
-      <View>
+
+  <KeyboardAvoidingView style={{
+      flex: 1,
+        justifyContent: 'center',
+        alignContent: 'center'
+      }}
+      behavior="padding"
+      >
         <Text style={styles.text}>
-        What is the title on your deck?
+        What is the title on your new deck?
         </Text>
-        <TextInput
-        style={styles.input}
-        placeholder="    Enter Deck Name"
 
-      />
+          <TextInput
+          style={styles.input}
+          placeholder="    Enter Deck Name"
+          onChangeText = {titleText => this.setState ({ titleText}) }
+          value= {this.state.titleText }
+        />
+
       <TouchableOpacity
-      style={styles.submitButton}
-      onPress= {this.Submit}>
-
-      <Text style = { styles.submitButtonText}> Submit </Text>
+        style={styles.submitButton}
+        onPress= {this.Submit}>
+        <Text style = { styles.submitButtonText}> Submit </Text>
       </TouchableOpacity>
 
-      </View>
+    </KeyboardAvoidingView>
+
     )
   }
 }
