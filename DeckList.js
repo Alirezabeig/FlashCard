@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList} from 'react-native'
 //import {} from './utils/helper'
 import {fetchDeckDB} from './actions/index'
+import { Card } from 'react-native-elements';
 
 class DeckList extends Component {
 
@@ -13,7 +14,7 @@ class DeckList extends Component {
   renderItem = ({ item }) =>
     <TouchableOpacity
       onPress={() => this.props.navigation.navigate(
-              'DeckDetail',
+              'Deck',
               {
                 entryId: item.key,
                 navTitle: item.title
@@ -21,36 +22,32 @@ class DeckList extends Component {
             )}
     >
       <View>
-        <Card
-          title={item.title}
-          subtitle={`${item.questions.length} cards`}
-        >
-          <Badge
-            containerStyle={{ backgroundColor: 'lightblue'}}
-          >
-            <Text>
-              {`${item.questions.length} cards`}
 
-            </Text>
-          </Badge>
-        </Card>
+      <Card
+        title={item.title}
+        subtitle={`${item.questions.length} cards`}
+      >
+
+          <Text>
+            {`${item.questions.length} cards`}
+          </Text>
+
+      </Card>
+
       </View>
     </TouchableOpacity>;
 
   render (){
     return (
-      <View>
-
-      <Text >
-      This is the deck DeckList
-      </Text>
-      
-        <FlatList
-        data={this.props.DBData}
-        renderItem={this.renderItem}
-        />
-
-
+      <View style={styles.containerStyle}>
+        {this.props.DBdata.length > 0
+          ?
+          <FlatList
+            data={this.props.DBdata}
+            renderItem={this.renderItem}
+          />
+          : <Card title="Create a deck to get started!"/>
+        }
       </View>
     );
   }
