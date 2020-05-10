@@ -10,14 +10,38 @@ class DeckList extends Component {
     this.props.fetchDeckDB();
   }
 
-  
+  renderItem = ({ item }) =>
+    <TouchableOpacity
+      onPress={() => this.props.navigation.navigate(
+              'DeckDetail',
+              {
+                entryId: item.key,
+                navTitle: item.title
+              }
+            )}
+    >
+      <View>
+        <Card
+          title={item.title}
+          subtitle={`${item.questions.length} cards`}
+        >
+          <Badge
+            containerStyle={{ backgroundColor: 'lightblue'}}
+          >
+            <Text>
+              {`${item.questions.length} cards`}
+            </Text>
+          </Badge>
+        </Card>
+      </View>
+    </TouchableOpacity>;
 
   render (){
     return (
       <View>
         <FlatList
         data={this.props.DBData}
-
+        renderItem={this.renderItem}
         />
 
       </View>
