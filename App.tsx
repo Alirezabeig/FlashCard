@@ -55,6 +55,7 @@ export default function App() {
         <NavigationContainer >
           <Stack.Navigator>
               <Stack.Screen name="Home" component={Tabs}/>
+              <Stack.Screen name="Deck" component={Deck}/>
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>
