@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList} from 'react-native'
 //import {} from './utils/helper'
 import {fetchDeckDB} from './actions/index'
-import { Card } from 'react-native-elements';
+import { Card, Badge } from 'react-native-elements';
 
 class DeckList extends Component {
 
@@ -31,6 +31,7 @@ class DeckList extends Component {
           <Text>
             {`${item.questions.length} cards`}
           </Text>
+
 
       </Card>
 

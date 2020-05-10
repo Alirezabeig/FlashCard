@@ -14,47 +14,6 @@ import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import reducer from './Reducers/index';
 
-function HomeScreen() {
-  return (
-    <View >
-      <Home/>
-    </View>
-  );
-}
-
-function AddDeckScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center' }}>
-    <AddDeck/>
-    </View>
-  );
-}
-
-function DeckScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center' }}>
-    <Deck/>
-    </View>
-  );
-}
-
-function AddCardScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center' }}>
-    <AddCard/>
-    </View>
-  );
-}
-
-
-function CardViewScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center' }}>
-    <CardView/>
-    </View>
-  );
-}
-
 const Tab = createBottomTabNavigator();
 
 const Stack = createStackNavigator();
@@ -71,7 +30,7 @@ export default function App() {
           <Tab.Navigator >
             <Tab.Screen
               name="Home"
-              component={HomeScreen}
+              component={Home}
               options={{
               tabBarLabel: 'Home',
               tabBarIcon: ({ color, size }) => (
@@ -81,14 +40,14 @@ export default function App() {
 
             <Tab.Screen
               name="Add Deck"
-              component={AddDeckScreen}
+              component={AddDeck}
               options={{
               tabBarLabel: 'Add Deck',
               tabBarIcon: ({ color, size }) => (
                 <MaterialCommunityIcons name="plus" color={color} size={size} />
               ),
             }}  />
-            <Tab.Screen name="Deck" component={DeckScreen}/>
+            <Tab.Screen name="Deck" component={Deck}/>
 
           </Tab.Navigator>
         </NavigationContainer>
