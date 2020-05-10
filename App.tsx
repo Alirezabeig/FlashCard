@@ -4,7 +4,7 @@ import AddDeck from './AddDeck'
 import Deck from './Deck'
 import AddCard from './AddCard'
 import CardView from './CardView'
-import DeckList from './DeckList'
+import Home from './Home'
 import {Provider, connect} from 'react-redux'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -17,7 +17,7 @@ import reducer from './Reducers/index';
 function HomeScreen() {
   return (
     <View >
-      <DeckList/>
+      <Home/>
     </View>
   );
 }

@@ -30,6 +30,7 @@ class DeckList extends Component {
           >
             <Text>
               {`${item.questions.length} cards`}
+
             </Text>
           </Badge>
         </Card>
@@ -39,10 +40,16 @@ class DeckList extends Component {
   render (){
     return (
       <View>
+
+      <Text >
+      This is the deck DeckList
+      </Text>
+      
         <FlatList
         data={this.props.DBData}
         renderItem={this.renderItem}
         />
+
 
       </View>
     );
