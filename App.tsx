@@ -5,13 +5,14 @@ import Deck from './Deck'
 import AddCard from './AddCard'
 import CardView from './CardView'
 import DeckList from './DeckList'
+import {Provider, connect} from 'react-redux'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator} from '@react-navigation/stack';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-
-
-
+import { createStore, applyMiddleware } from 'redux';
+import ReduxThunk from 'redux-thunk';
+import reducer from './Reducers/index';
 
 function HomeScreen() {
   return (
@@ -61,8 +62,10 @@ const Stack = createStackNavigator();
 
 export default function App() {
 
-  return (
 
+  const store = createStore(reducer, {}, applyMiddleware(ReduxThunk));
+  return (
+    <Provider store={store}>
 
         <NavigationContainer >
           <Tab.Navigator >
@@ -89,6 +92,7 @@ export default function App() {
 
           </Tab.Navigator>
         </NavigationContainer>
+      </Provider>
 
 
     );

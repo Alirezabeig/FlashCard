@@ -1,30 +1,38 @@
 import React, { Component } from 'react';
-import {View, Text, TextInput, StyleSheet, TouchableOpacity} from 'react-native'
+import {connect} from 'react-redux';
+import {View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList} from 'react-native'
 //import {} from './utils/helper'
+import {fetchDeckDB} from './actions/index'
 
+class DeckList extends Component {
 
-export default class DeckList extends Component {
+  componentDidMount(){
+    this.props.fetchDeckDB();
+  }
 
-
+  
 
   render (){
     return (
       <View>
-          <Text style= {styles.cardName}>
-          DeckList // .map the deck.js
-          </Text>
+        <FlatList
+        data={this.props.DBData}
 
-
-
-
-
-
-
+        />
 
       </View>
-    )
+    );
   }
-}
+};
+
+const mapStateToProps = state => {
+  const DBdata = state.decks;
+
+  return { DBdata };
+};
+
+export default connect(mapStateToProps, { fetchDeckDB })(DeckList);
+
 
 const styles = StyleSheet.create({
    container: {

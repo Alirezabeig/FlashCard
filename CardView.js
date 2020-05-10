@@ -3,7 +3,7 @@ import {View, Text, TextInput, StyleSheet, TouchableOpacity} from 'react-native'
 //import {} from './utils/helper'
 
 
-export default class AddDeck extends Component {
+export default class AddCard extends Component {
 
 
 
@@ -19,17 +19,7 @@ export default class AddDeck extends Component {
 
 
 
-      <TouchableOpacity
-      style={styles.submitButtonCorrect}>
-      <Text style = { styles.submitButtonText}> Correct </Text>
-
-      </TouchableOpacity>
-
-      <TouchableOpacity
-      style={styles.submitButtonIncorrect}>
-      <Text style = { styles.submitButtonText}> Incorrect </Text>
-
-      </TouchableOpacity>
+      
 
       </View>
     )
