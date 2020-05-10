@@ -37,7 +37,7 @@ function Tabs (){
           <MaterialCommunityIcons name="plus" color={color} size={size} />
         ),
       }}  />
-      <Tab.Screen name="Deck" component={Deck}/>
+
 
     </Tab.Navigator>
 

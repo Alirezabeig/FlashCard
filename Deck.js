@@ -4,40 +4,38 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import App from './app'
 //import {} from './utils/helper'
+import {connect} from 'react-redux';
+import {getDeckDetails} from './actions/index';
+import { Card } from 'react-native-elements';
 
 
 AddCard = ()=> {
 
 }
-
-
 StartQuiz=()=> {
-
 }
-
 Remove =() => {
 }
 
-const Stack = createStackNavigator();
+class Deck extends Component {
+  componentDidMount() {
+    const {state} = this.props.navigation;
+    var title = state.params.entryID;
+      this.props.getDeckDetails(title);
+    }
 
-
-
-export default class AddDeck extends Component {
   render (){
     return (
 
 
       <View>
 
-      <KeyboardAvoidingView style={{
-              flex: 1,
-                justifyContent: 'center',
-                alignContent: 'center'
-              }}/>
 
-        <Text style= {styles.deckName}>
-          Deck Name
-        </Text>
+        <Card title={this.props.title}>
+
+              <Text style={{marginBottom: 10, textAlign: 'center'}}>
+                  {this.props.questions ?this.props.questions.length : 0} cards
+                </Text>
 
         <Text style={styles.text}>
           Number of cards
@@ -45,15 +43,15 @@ export default class AddDeck extends Component {
 
 
       <TouchableOpacity
-      style={styles.submitButton}
-      onPress={this.AddCard}>
-      <Text style = { styles.submitButtonText}> Add Card </Text>
+          style={styles.submitButton}
+          onPress={this.AddCard}>
+          <Text style = { styles.submitButtonText}> Add Card </Text>
       </TouchableOpacity>
 
       <TouchableOpacity
-      style={styles.submitButton}
-      onPres={this.StartQuiz}>
-      <Text style = { styles.submitButtonText}> Start Quiz </Text>
+          style={styles.submitButton}
+          onPres={this.StartQuiz}>
+          <Text style = { styles.submitButtonText}> Start Quiz </Text>
       </TouchableOpacity>
 
       <Button
@@ -61,14 +59,20 @@ export default class AddDeck extends Component {
           onPress={this.remove}
         />
 
-
-
-
-
+        </Card>
       </View>
     )
   }
 }
+const mapStateToProps = state => {
+
+  const { title, questions } = state.deckDetail ? state.deckDetail : ('', []);
+
+  return { title, questions };
+};
+
+
+export default connect(mapStateToProps,{ getDeckDetails})(Deck)
 
 const styles = StyleSheet.create({
    container: {
@@ -84,7 +88,7 @@ const styles = StyleSheet.create({
 
    text : {
      margin: 10,
-     marginLeft: 30,
+     marginLeft: 20,
      height: 40,
      fontSize: 15,
      marginTop: 10,
@@ -103,7 +107,7 @@ const styles = StyleSheet.create({
    },
    submitButtonText:{
       color: 'white',
-      marginLeft: 120,
+      marginLeft: 95,
       justifyContent : "center",
    }
 });

@@ -13,3 +13,12 @@ export function fetchDeckDB() {
     getDecks().then(data => dispatch({ type: FETCH_DECK_DB, payload: data}));
   }
 }
+
+export function getDeckDetails(entryId) {
+  return (dispatch) => {
+    getDeck(entryId)
+      .then(cardDeck => {
+        dispatch({ type: FETCH_DECK_INFO, payload: JSON.parse(cardDeck) })
+      });
+  }
+}
