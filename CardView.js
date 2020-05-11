@@ -1,18 +1,45 @@
 import React, { Component } from 'react';
 import {View, Text, TextInput, StyleSheet, TouchableOpacity} from 'react-native'
 //import {} from './utils/helper'
+import { Card } from 'react-native-elements';
 
 
 export default class Quiz extends Component {
 
+    state = {
+      showQuestion: true,
+      questions: '',
+      currentQuestion:0,
+      correctAnswers:0,
+    };
 
+ShowCard(){
+  const {
+    questions,
+    currentQuestion,
+    correctAnswers,
+  } = this.state;
+
+return (
+  <Card
+    title={
+    this.state.showQuestion
+    ? `Q:{questions[currentQuestion].question}`
+    : `A:{questions[currentQuestion]}.answer}`
+  }
+  >
+    <Text>hey there</Text>
+
+ </Card>
+)
+
+  }
 
   render (){
     return (
       <View>
-          <Text style= {styles.cardName}>
-          Card View
-          </Text>
+
+          {this.ShowCard()}
 
       </View>
     )
