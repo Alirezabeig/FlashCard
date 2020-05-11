@@ -43,5 +43,22 @@ export function saveDeckTitle(title) {
 
   console.log(error)
   }
+}
 
+export function addCard(title, card){
+  try {
+  return AsyncStorage.getItem(title).then(result=>{
+    const data = JSON.parse(result);
+
+    let questions= data.questions;
+    questions.push(card);
+
+    AsyncStorage.mergeItem(title,JSON.stringify({
+        questions
+      }));
+    });
+  }catch (error){
+    console.log(error);
+  }
+  return "You got your card added!"
 }

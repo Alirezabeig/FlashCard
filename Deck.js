@@ -89,9 +89,7 @@ class Deck extends Component {
   }
 }
 const mapStateToProps = state => {
-
   const { title, questions } = state.deckDetail ? state.deckDetail : ('', []);
-
   return { title, questions };
 };
 

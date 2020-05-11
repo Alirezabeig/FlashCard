@@ -13,13 +13,14 @@ export default class AddDeck extends Component {
       handleSubmit=() => {
         if (this.state.questionInput && this.state.answerInput){
           const {questionInput,answerInput}=this.state;
-          //const title= this.props.navigation.state.params.title;
+          const title= this.props.route.params.title;
 
-          const card = {
+          const cardInfo = {
             question: questionInput,
             answer: answerInput
           };
 
+          //AddCard(title, cardInfo);
           //Add this card to the  - Connect to Util/API
 
           this.setState({
