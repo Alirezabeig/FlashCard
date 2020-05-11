@@ -20,7 +20,7 @@ export default class AddDeck extends Component {
             answer: answerInput
           };
 
-          //AddCard(title, cardInfo);
+          AddCard(title, cardInfo);
           //Add this card to the  - Connect to Util/API
 
           this.setState({
