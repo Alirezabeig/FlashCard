@@ -8,12 +8,12 @@ export default class Quiz extends Component {
 
     state = {
       showQuestion: true,
-      questions: '',
+      questions: this.props.questions,
       currentQuestion:0,
       correctAnswers:0,
     };
 
-ShowCard(){
+showCard(){
   const {
     questions,
     currentQuestion,
@@ -22,13 +22,13 @@ ShowCard(){
 
 return (
   <Card
-    title={
-    this.state.showQuestion
-    ? `Q:{questions[currentQuestion].question}`
-    : `A:{questions[currentQuestion]}.answer}`
-  }
+  title={
+            this.state.showQuestion
+              ? `Q: ${questions[currentQuestion]}`
+              : `A: ${questions[currentQuestion].answer}`
+          }
   >
-    <Text>hey there</Text>
+
 
  </Card>
 )
@@ -39,7 +39,7 @@ return (
     return (
       <View>
 
-          {this.ShowCard()}
+          {this.showCard()}
 
       </View>
     )

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {View, Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView} from 'react-native'
 //import {} from './utils/helper'
+import {cardAddDeck} from './utils/api'
 
 
 export default class AddDeck extends Component {
@@ -20,7 +21,7 @@ export default class AddDeck extends Component {
             answer: answerInput
           };
 
-          AddCard(title, cardInfo);
+          cardAddDeck(title, cardInfo);
           //Add this card to the  - Connect to Util/API
 
           this.setState({
