@@ -23,9 +23,7 @@ showCard(){
 return (
   <Card
   title={
-            this.state.showQuestion
-              ? `Q: ${questions[currentQuestion]}`
-              : `A: ${questions[currentQuestion].answer}`
+              `${questions[currentQuestion]}`
           }
   >
 
