@@ -71,17 +71,25 @@ class Deck extends Component {
           <Text style = { styles.submitButtonText}> Add Card </Text>
       </TouchableOpacity>
 
+
       <TouchableOpacity
           style={styles.submitButton}
-          onPres={this.StartQuiz}>
-          <Text style = { styles.submitButtonText}> Start Quiz </Text>
+          onPress={()=>{
+            this.props.navigation.navigate(
+            'Quiz',
+            {
+            navTitle: this.props.title,
+            questions: this.props.questions}
+          );
+        }
+      } >
+      <Text style = { styles.submitButtonText}> Start Quiz </Text>
       </TouchableOpacity>
 
       <Button
           title="Delete Deck"
           onPress={this.remove}
         />
-
         </Card>
       </View>
 

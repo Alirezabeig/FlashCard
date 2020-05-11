@@ -3,7 +3,7 @@ import {View, Text, TextInput, StyleSheet, TouchableOpacity} from 'react-native'
 //import {} from './utils/helper'
 
 
-export default class AddCard extends Component {
+export default class Quiz extends Component {
 
 
 
@@ -13,13 +13,6 @@ export default class AddCard extends Component {
           <Text style= {styles.cardName}>
           Card View
           </Text>
-
-
-
-
-
-
-      
 
       </View>
     )
