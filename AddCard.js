@@ -5,7 +5,30 @@ import {View, Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingVie
 
 export default class AddDeck extends Component {
 
+      state= {
+          questionInput:'',
+          answerInput:'',
+      }
 
+      handleSubmit=() => {
+        if (this.state.questionInput && this.state.answerInput){
+          const {questionInput,answerInput}=this.state;
+          //const title= this.props.navigation.state.params.title;
+
+          const card = {
+            question: questionInput,
+            answer: answerInput
+          };
+
+          //Add this card to the  - Connect to Util/API
+
+          this.setState({
+            questionInput:'',
+            answerInput:'',
+          });
+
+        }
+      }
 
   render (){
     return (
@@ -22,15 +45,26 @@ export default class AddDeck extends Component {
 
           <TextInput
           style={styles.input}
-          placeholder="  Type your question: "
+          placeholder="  Enter your question: "
+          onChangeText={questionInput => this.setState({questionInput})}
+          value={this.state.questionInput}
         />
+
+        <TextInput
+        style={styles.input}
+        placeholder="  Enter the answer "
+        onChangeText={answerInput=> this.setState({answerInput})}
+        value= {this.state.answerInput}
+      />
 
 
 
 
       <TouchableOpacity
-      style={styles.submitButton}>
+      style={styles.submitButton}
+      onPress={this.handleSubmit}>
       <Text style = { styles.submitButtonText}> Submit </Text>
+
 
       </TouchableOpacity>
 

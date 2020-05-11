@@ -10,7 +10,13 @@ import { Card } from 'react-native-elements';
 
 
 AddCard = ()=> {
-
+ this.props.navigation.navigate(
+   'AddCard',
+   {
+    navTitle: this.props.title,
+    title: this.props.title
+        }
+ );
 }
 StartQuiz=()=> {
 }
@@ -18,20 +24,27 @@ Remove =() => {
 }
 
 class Deck extends Component {
+
   componentDidMount() {
-    const {state} = this.props.navigation;
-    var title = state.params.entryID;
-      this.props.getDeckDetails(title);
-    }
+    this.props.getDeckDetails(this.props.route.params.entryId);
+  }
+
+  static navigationOptions = ({ navigation }) => {
+      return {
+        title: navigation.state.params.navTitle
+      }
+    };
+
+
+
 
   render (){
     return (
 
 
-      <View>
+      <View >
 
-
-        <Card title={this.props.title}>
+        <Card title={this.props.title}  >
 
               <Text style={{marginBottom: 10, textAlign: 'center'}}>
                   {this.props.questions ?this.props.questions.length : 0} cards
@@ -44,7 +57,17 @@ class Deck extends Component {
 
       <TouchableOpacity
           style={styles.submitButton}
-          onPress={this.AddCard}>
+          onPress={()=>{
+            this.props.navigation.navigate(
+            'AddCard',
+            {
+              navTitle: this.props.title,
+              title:this.props.title,
+            }
+          );
+        }
+      }
+          >
           <Text style = { styles.submitButtonText}> Add Card </Text>
       </TouchableOpacity>
 
@@ -61,6 +84,7 @@ class Deck extends Component {
 
         </Card>
       </View>
+
     )
   }
 }
@@ -77,6 +101,11 @@ export default connect(mapStateToProps,{ getDeckDetails})(Deck)
 const styles = StyleSheet.create({
    container: {
       paddingTop: 23
+   },
+   card: {
+     padding: 50,
+     margin: 50,
+     backgroundColor:'#a52a2a'
    },
    deckName : {
      margin: 5,

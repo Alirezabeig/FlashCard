@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView} from 'react-native'
+import {View, Text, Platform, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView} from 'react-native'
 //import {} from './utils/helper'
 import {saveDeckTitle} from './utils/api'
 
@@ -28,13 +28,11 @@ export default class AddDeck extends Component {
   render (){
     return (
 
-  <KeyboardAvoidingView style={{
-      flex: 1,
-        justifyContent: 'center',
-        alignContent: 'center'
-      }}
-      behavior="padding"
-      >
+      <KeyboardAvoidingView
+          behavior={Platform.OS == "ios" ? "padding" : "height"}
+          style={styles.container}
+        >
+
         <Text style={styles.text}>
         What is the title on your new deck?
         </Text>
@@ -60,7 +58,7 @@ export default class AddDeck extends Component {
 
 const styles = StyleSheet.create({
    container: {
-      paddingTop: 23
+      flex:1
    },
    text : {
      margin: 10,
@@ -84,7 +82,7 @@ const styles = StyleSheet.create({
 
       backgroundColor: '#7a42f4',
       padding: 15,
-      margin: 25,
+      margin: 20,
       height: 50,
       borderRadius:20,
    },

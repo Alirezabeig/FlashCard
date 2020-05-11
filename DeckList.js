@@ -21,11 +21,13 @@ class DeckList extends Component {
               }
             )}
     >
-      <View>
+
 
       <Card
+        style={styles.card}
         title={item.title}
         subtitle={`${item.questions.length} cards`}
+
       >
 
           <Text>
@@ -35,12 +37,11 @@ class DeckList extends Component {
 
       </Card>
 
-      </View>
     </TouchableOpacity>;
 
   render (){
     return (
-      <View style={styles.containerStyle}>
+      <View style={styles.containerStyle} >
         {this.props.DBdata.length > 0
           ?
           <FlatList
@@ -74,6 +75,11 @@ const styles = StyleSheet.create({
      fontSize: 20,
      marginTop: 150,
 
+   },
+   card: {
+     padding: 10,
+     margin: 2,
+     backgroundColor:'#a52a2a'
    },
    cardName : {
      margin: 15,

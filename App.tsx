@@ -56,6 +56,8 @@ export default function App() {
           <Stack.Navigator>
               <Stack.Screen name="Home" component={Tabs}/>
               <Stack.Screen name="Deck" component={Deck}/>
+              <Stack.Screen name="AddCard" component={AddCard}/>
+              <Stack.Screen name="Start Quiz" component={CardView}/>
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>
