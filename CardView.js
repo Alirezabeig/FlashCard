@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import {View, Text, TextInput, StyleSheet, TouchableOpacity} from 'react-native'
 //import {} from './utils/helper'
 import { Card } from 'react-native-elements';
+import {connect} from 'react-redux'
 
 
-export default class Quiz extends Component {
+class Quiz extends Component {
 
     state = {
       showQuestion: true,
@@ -22,9 +23,9 @@ showCard(){
 
 return (
   <Card
-  title={
-              `${questions[currentQuestion]}`
-          }
+  question={this.props.questions[currentQuestion]}
+
+
   >
 
 
@@ -43,6 +44,12 @@ return (
     )
   }
 }
+function mapStateToProps (state){
+  const { questions } = state.deckDetail ? state.deckDetail : ('', []);
+  return { questions };
+};
+
+export default connect(mapStateToProps)(Quiz)
 
 const styles = StyleSheet.create({
    container: {

@@ -9,7 +9,8 @@ import {getDeckDetails, deleteDeck} from './actions/index';
 import { Card } from 'react-native-elements';
 
 
-AddCard = ()=> {
+
+ AddCard = ()=> {
  this.props.navigation.navigate(
    'AddCard',
    {
@@ -32,6 +33,7 @@ class Deck extends Component {
   deleteThisDeck() {
      const title = this.props.title;
      this.props.deleteDeck(title);
+     this.props.navigation.navigate('Home')
 
    }
 
@@ -48,17 +50,14 @@ class Deck extends Component {
     return (
 
 
-      <View >
+      <View  >
 
-        <Card title={this.props.title}  >
+        <Card title={this.props.title} styles={styles.card} >
 
               <Text style={{marginBottom: 10, textAlign: 'center'}}>
                   {this.props.questions ?this.props.questions.length : 0} cards
                 </Text>
 
-        <Text style={styles.text}>
-          Number of cards
-        </Text>
 
 
       <TouchableOpacity
@@ -96,6 +95,7 @@ class Deck extends Component {
           title="Delete Deck"
           onPress={() => this.deleteThisDeck()}
         />
+
         </Card>
       </View>
 
@@ -117,7 +117,8 @@ const styles = StyleSheet.create({
    card: {
      padding: 50,
      margin: 50,
-     backgroundColor:'#a52a2a'
+     backgroundColor:'#a52a2a',
+     flexWrap: 'nowrap',
    },
    deckName : {
      margin: 5,
