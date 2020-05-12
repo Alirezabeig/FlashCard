@@ -20,6 +20,7 @@ export default class AddDeck extends Component {
       this.setState({
        titleText: ''
      });
+     this.props.navigation.navigate('Home')
    }
 
   };
