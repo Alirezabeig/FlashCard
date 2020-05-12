@@ -11,7 +11,7 @@ export default class AddDeck extends Component {
           answerInput:'',
       }
 
-      handleSubmit=() => {
+      submit=() => {
         if (this.state.questionInput && this.state.answerInput){
           const {questionInput,answerInput}=this.state;
           const title= this.props.route.params.title;
@@ -29,6 +29,7 @@ export default class AddDeck extends Component {
             answerInput:'',
           });
 
+          this.props.navigation.navigate('Deck')
         }
       }
 
@@ -64,7 +65,7 @@ export default class AddDeck extends Component {
 
       <TouchableOpacity
       style={styles.submitButton}
-      onPress={this.handleSubmit}>
+      onPress={this.submit}>
       <Text style = { styles.submitButtonText}> Submit </Text>
 
 
