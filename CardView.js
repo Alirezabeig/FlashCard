@@ -21,32 +21,33 @@ showCard(){
     correctAnswers,
   } = this.state;
 
-return (
-  <Card
-  question={this.props.questions[currentQuestion]}
+  return (
+    <Card
+      title={
+        this.state.showQuestion
+          ? `Q: ${questions[currentQuestion].question}`
+          : `A: ${questions[currentQuestion].answer}`
+      }
+    >
 
-
-  >
-
-
- </Card>
-)
-
-  }
+    </Card>
+      );
+    }
 
   render (){
     return (
       <View>
 
           {this.showCard()}
+          <Text>yes card</Text>
 
       </View>
     )
   }
 }
 function mapStateToProps (state){
-  const { questions } = state.deckDetail ? state.deckDetail : ('', []);
-  return { questions };
+  const { title, questions } = state.deckDetail ? state.deckDetail : ('', []);
+  return { title, questions };
 };
 
 export default connect(mapStateToProps)(Quiz)
