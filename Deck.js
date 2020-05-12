@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import App from './app'
 //import {} from './utils/helper'
 import {connect} from 'react-redux';
-import {getDeckDetails} from './actions/index';
+import {getDeckDetails, deleteDeck} from './actions/index';
 import { Card } from 'react-native-elements';
 
 
@@ -18,16 +18,22 @@ AddCard = ()=> {
         }
  );
 }
-StartQuiz=()=> {
-}
-Remove =() => {
-}
+
+
+
 
 class Deck extends Component {
 
   componentDidMount() {
     this.props.getDeckDetails(this.props.route.params.entryId);
   }
+
+
+  deleteThisDeck() {
+     const title = this.props.title;
+     this.props.deleteDeck(title);
+
+   }
 
   static navigationOptions = ({ navigation }) => {
       return {
@@ -88,7 +94,7 @@ class Deck extends Component {
 
       <Button
           title="Delete Deck"
-          onPress={this.remove}
+          onPress={() => this.deleteThisDeck()}
         />
         </Card>
       </View>
@@ -102,7 +108,7 @@ const mapStateToProps = state => {
 };
 
 
-export default connect(mapStateToProps,{ getDeckDetails})(Deck)
+export default connect(mapStateToProps,{ deleteDeck, getDeckDetails})(Deck)
 
 const styles = StyleSheet.create({
    container: {

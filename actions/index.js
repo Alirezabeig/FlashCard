@@ -22,3 +22,14 @@ export function getDeckDetails(entryId) {
       });
   }
 }
+
+export function deleteDeck(removeTitle) {
+  return (dispatch) => {
+    AsyncStorage.removeItem(removeTitle)
+      .then(getDecks().then(data => {
+          dispatch({ type: DELETE_DECK, payload: data})
+        })
+        .catch(err => console.log(err)))
+      .catch(err => console.log(err));
+  }
+}
