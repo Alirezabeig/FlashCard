@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
 import { View, Text, Button , TouchableOpacity, TouchableWithoutFeedback, Animated} from 'react-native';
 import { NavigationActions } from 'react-navigation';
-import {
-  Badge,
-  Card
-} from 'react-native-elements';
+import {Card} from 'react-native-elements';
 
 import CardFlip from 'react-native-card-flip';
 
@@ -70,8 +67,11 @@ renderCard() {
     if (thisQuestion < questions.length) {
       return (
         <View>
+        <Card
+        title={`Q: ${questions[thisQuestion].question}`}>
 
-        <Card>
+
+
           <TouchableOpacity
           style={styles.buttonStyle1}
           onPress={() => {
@@ -81,21 +81,6 @@ renderCard() {
             });
           }}
         >
-
-        <CardFlip style={styles.cardContainer} ref={(card) => this.card = card} >
-
-            <TouchableOpacity style={styles.card} onPress={() => this.card.flip()}>
-                  <Text>`A: ${questions[thisQuestion].question}`</Text>
-              	<Text>Answer</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.card} onPress={() => this.card.flip()}>
-                    <Text>`Q: ${questions[thisQuestion].answer}`</Text>
-                	<Text>Question</Text>
-            </TouchableOpacity>
-
-            </CardFlip>
-
                 <Text style = { styles.submitButtonText}>Correct</Text>
                 </TouchableOpacity>
 
@@ -105,8 +90,8 @@ renderCard() {
                 >
                 <Text style = { styles.submitButtonText}>Incorrect</Text>
                 </TouchableOpacity>
+          </Card>
 
-        </Card>
 
         <View>
           <Text
@@ -140,9 +125,31 @@ renderCard() {
   }
 
   render() {
+    const {
+      questions,
+      thisQuestion,
+      correctAnswers
+    } = this.state;
+
     return (
-      <View style={styles.cardContainer} ref={(card) => this.card = card} >
-        {this.renderCard()}
+      <View>
+
+
+    {this.renderCard()}
+    <CardFlip style={styles.cardContainer} ref={card => (this.card = card)}>
+      <TouchableOpacity
+          activeOpacity={1}
+          style={[styles.card, styles.card2]}
+          onPress={() => this.card.flip()}>
+          <Text style={styles.label}>Answer</Text>
+    </TouchableOpacity>
+    <TouchableOpacity
+          activeOpacity={1}
+          style={[styles.card, styles.card2]}
+          onPress={() => this.card.flip()}>
+          <Text style={styles.label}>A: {questions[thisQuestion].answer}</Text>
+    </TouchableOpacity>
+  </CardFlip>
 
 
          </View>
@@ -153,19 +160,16 @@ renderCard() {
 
 const styles = {
 
-  cardContainer:{
-    backgroundColor: '#20b2aa',
-    flex: 1,
-  },
+
   numberRemaining: {
     textAlign: 'center',
     marginBottom: 10,
     margin: 10,
   },
 
-  card:{
+  cards:{
     fontSize: 40,
-    marginTop: 50,
+    marginTop: 30,
   },
 
   buttonStyle1: {
@@ -206,7 +210,45 @@ const styles = {
      color: 'white',
      marginLeft: 95,
      justifyContent : "center",
-  }
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  cardContainer: {
+    width: 320,
+    height: 470,
+  },
+  card: {
+    width: 290,
+    height: 70,
+    backgroundColor: '#FE474C',
+    borderRadius: 5,
+    marginLeft:40,
+    margin:20,
+    shadowColor: 'rgba(0,0,0,0.5)',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.5,
+  },
+  card1: {
+    backgroundColor: '#FE474C',
+  },
+  card2: {
+    backgroundColor: '#FEB12C',
+  },
+  label: {
+    textAlign: 'center',
+    fontSize: 20,
+    padding:10,
+    fontFamily: 'System',
+    color: '#ffffff',
+    backgroundColor: 'transparent',
+  },
 
 
 };
