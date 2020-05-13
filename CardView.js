@@ -71,18 +71,7 @@ renderCard() {
       return (
         <View>
 
-
-
-        <Card
-          title={
-            this.state.showQuestion
-              ? `A: ${questions[thisQuestion].question}`
-              : `Q: ${questions[thisQuestion].answer}`
-          }
-        >
-
-
-
+        <Card>
           <TouchableOpacity
           style={styles.buttonStyle1}
           onPress={() => {
@@ -93,15 +82,29 @@ renderCard() {
           }}
         >
 
-          <Text style = { styles.submitButtonText}>Correct</Text>
-          </TouchableOpacity>
+        <CardFlip style={styles.cardContainer} ref={(card) => this.card = card} >
 
-          <TouchableOpacity
-            style={styles.buttonStyle2}
-            onPress={() => this.setState({ thisQuestion: thisQuestion+1 })}
-          >
-          <Text style = { styles.submitButtonText}>Incorrect</Text>
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.card} onPress={() => this.card.flip()}>
+                  <Text>`A: ${questions[thisQuestion].question}`</Text>
+              	<Text>Answer</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.card} onPress={() => this.card.flip()}>
+                    <Text>`Q: ${questions[thisQuestion].answer}`</Text>
+                	<Text>Question</Text>
+            </TouchableOpacity>
+
+            </CardFlip>
+
+                <Text style = { styles.submitButtonText}>Correct</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={styles.buttonStyle2}
+                  onPress={() => this.setState({ thisQuestion: thisQuestion+1 })}
+                >
+                <Text style = { styles.submitButtonText}>Incorrect</Text>
+                </TouchableOpacity>
 
         </Card>
 
@@ -139,7 +142,6 @@ renderCard() {
   render() {
     return (
       <View style={styles.cardContainer} ref={(card) => this.card = card} >
-
         {this.renderCard()}
 
 
