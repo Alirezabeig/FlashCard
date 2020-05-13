@@ -11,6 +11,7 @@ import {
   frontAnimatedStyle,
   elevation,
   elevationBack,elevationFront, backAnimatedStyle, backOpacity, value, flipCard} from './CardFlip';
+  import CardFlip from './CardFlip'
 
 
 class Quiz extends Component {

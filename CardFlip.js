@@ -63,6 +63,7 @@ const CardFlip = () => {
         }
 
 }
+export default CardFlip
 
 const styles = StyleSheet.create({
     paperFront : {
