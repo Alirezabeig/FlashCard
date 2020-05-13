@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text, TextInput, StyleSheet, Button, TouchableOpacity, KeyboardAvoidingView} from 'react-native'
+import {View, Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView} from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import App from './app'
@@ -7,6 +7,9 @@ import App from './app'
 import {connect} from 'react-redux';
 import {getDeckDetails, deleteDeck} from './actions/index';
 import { Card } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+import { Button } from 'react-native-elements';
 
 
 
@@ -78,7 +81,7 @@ class Deck extends Component {
 
 
       <TouchableOpacity
-          style={styles.submitButton}
+          style={styles.submitButton2}
           onPress={()=>{
             this.props.navigation.navigate(
             'Quiz',
@@ -92,7 +95,11 @@ class Deck extends Component {
       </TouchableOpacity>
 
       <Button
-          title="Delete Deck"
+
+        title="Delete Deck"
+        type="clear"
+
+
           onPress={() => this.deleteThisDeck()}
         />
 
@@ -138,13 +145,27 @@ const styles = StyleSheet.create({
      borderRadius:20,
 
    },
+   deleteButton:{
+     marginTop:100,
+   },
 
    submitButton: {
 
-      backgroundColor: '#7a42f4',
+      backgroundColor: '#ffa07a',
+      padding: 15,
+      margin: 15,
+      marginBottom: 10 ,
+      height: 50,
+      borderRadius:20,
+   },
+
+   submitButton2: {
+
+      backgroundColor: '#20b2aa',
       padding: 15,
       margin: 15,
       height: 50,
+      marginBottom: 50 ,
       borderRadius:20,
    },
    submitButtonText:{
