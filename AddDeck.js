@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import {View, Text, SafeAreaView, Keyboard, TouchableWithoutFeedback, Platform, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView} from 'react-native'
 //import {} from './utils/helper'
 import {saveDeckTitle} from './utils/api'
+import {getDeckDetails} from './actions/index';
+import {connect} from 'react-redux'
 
-
-
-export default class AddDeck extends Component {
+class AddDeck extends Component {
 
   state= {
     titleText: '',
@@ -20,6 +20,7 @@ export default class AddDeck extends Component {
       this.setState({
        titleText: ''
      });
+     this.props.getDeckDetails(titleText)
      this.props.navigation.navigate('Home')
    }
 
@@ -63,6 +64,12 @@ export default class AddDeck extends Component {
     )
   }
 }
+const mapStateToProps = state => {
+  const { titleText } = state.deckDetail ? state.deckDetail : ('');
+  return { titleText};
+};
+
+export default connect(mapStateToProps,{getDeckDetails})(AddDeck)
 
 const styles = StyleSheet.create({
    container: {
