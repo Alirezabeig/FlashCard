@@ -11,6 +11,14 @@ class DeckList extends Component {
     this.props.fetchDeckDB();
   }
 
+  componentDidUpdate(prevProps) {
+  // Typical usage (don't forget to compare props):
+  if (this.props.data !== prevProps.data) {
+    this.fetchDeckDB(this.props.data);
+  }
+
+}
+
   renderItem = ({ item }) =>
     <TouchableOpacity
       onPress={() => this.props.navigation.navigate(
@@ -31,8 +39,15 @@ class DeckList extends Component {
       >
 
           <Text>
-            {`${item.questions.length} cards`}
+            
+            {
+              item.questions.length>0
+              ?`${item.questions.length} cards`
+              : `0 card`
+            }
+
           </Text>
+
 
 
       </Card>

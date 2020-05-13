@@ -8,9 +8,7 @@ export default class Home extends Component {
     return (
       <View style={styles.container}>
         <DeckList {...this.props} />
-        <Text style={styles.text}>
-        This is Home
-        </Text>
+        
       </View>
     );
   }

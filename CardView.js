@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { View, Text, Button , TouchableOpacity, TouchableWithoutFeedback, Animated} from 'react-native';
 import { NavigationActions } from 'react-navigation';
-import {Card} from 'react-native-elements';
+import {Card, Badge} from 'react-native-elements';
 
 import CardFlip from 'react-native-card-flip';
 
@@ -68,9 +68,11 @@ renderCard() {
       return (
         <View>
         <Card
-        title={`Q: ${questions[thisQuestion].question}`}>
+            title={
 
-
+                `Q: ${questions[thisQuestion].question}`
+            }
+          >
 
           <TouchableOpacity
           style={styles.buttonStyle1}
@@ -106,21 +108,7 @@ renderCard() {
       );
     }
     return (
-
-
-      <Card
-        title={`You got ${correctAnswers} out of ${questions.length}
-        Score: ${score}%`}
-      >
-        <Button
-          buttonStyle={styles.buttonStyle3}
-          title="Back To Deck"
-          onPress={() => this.props.navigation.navigate('Deck')}
-        />
-
-
-      </Card>
-
+      <Text>Good Job</Text>
     );
   }
 
@@ -130,6 +118,17 @@ renderCard() {
       thisQuestion,
       correctAnswers
     } = this.state;
+    const score = parseInt(( correctAnswers/questions.length) * 100);
+
+
+    if (questions[thisQuestion] ===undefined){
+      return (
+        <View>
+         <Text style={styles.text}>You got {correctAnswers} out of {questions.length}</Text>
+         <Text style={styles.text}>Your Score: {score}%</Text>
+        </View>
+      );
+    }
 
     return (
       <View>
@@ -165,6 +164,16 @@ const styles = {
     textAlign: 'center',
     marginBottom: 10,
     margin: 10,
+  },
+  text : {
+    margin: 10,
+    marginLeft: 20,
+    height: 40,
+    fontSize: 15,
+    marginTop: 10,
+    opacity: .5,
+    borderRadius:20,
+
   },
 
   cards:{
@@ -223,7 +232,8 @@ const styles = {
   },
   card: {
     width: 290,
-    height: 70,
+    height: 200,
+    paddding: 50,
     backgroundColor: '#FE474C',
     borderRadius: 5,
     marginLeft:40,
@@ -244,7 +254,7 @@ const styles = {
   label: {
     textAlign: 'center',
     fontSize: 20,
-    padding:10,
+    padding:50,
     fontFamily: 'System',
     color: '#ffffff',
     backgroundColor: 'transparent',

@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 import {getDeckDetails, deleteDeck} from './actions/index';
 import { Card } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import Select from 'react-select';
 import { Button } from 'react-native-elements';
 
 
@@ -23,10 +23,8 @@ import { Button } from 'react-native-elements';
  );
 }
 
-
-
-
 class Deck extends Component {
+
 
   componentDidMount() {
     this.props.getDeckDetails(this.props.route.params.entryId);
@@ -35,7 +33,7 @@ class Deck extends Component {
 
   deleteThisDeck() {
      const title = this.props.title;
-     this.props.deleteDeck(title);
+    this.props.deleteDeck(title);
      this.props.navigation.navigate('Home')
 
    }
@@ -46,19 +44,19 @@ class Deck extends Component {
       }
     };
 
-
-
-
   render (){
     return (
-
 
       <View  >
 
         <Card title={this.props.title} styles={styles.card} >
 
               <Text style={{marginBottom: 10, textAlign: 'center'}}>
-                  {this.props.questions ?this.props.questions.length : 0} cards
+
+                  {this.props.questions && this.props.questions.length>0
+                    ?`${this.props.questions.length} Cards`
+                    : `0 Card`
+                  }
                 </Text>
 
 
@@ -80,28 +78,39 @@ class Deck extends Component {
       </TouchableOpacity>
 
 
-      <TouchableOpacity
-          style={styles.submitButton2}
-          onPress={()=>{
-            this.props.navigation.navigate(
-            'Quiz',
-            {
-            navTitle: this.props.title,
-            questions: this.props.questions}
-          );
-        }
-      } >
-      <Text style = { styles.submitButtonText}> Start Quiz </Text>
-      </TouchableOpacity>
+      <Text style={styles.iftexts}>
+      {this.props.questions && this.props.questions.length>0
+        ? (
+          <TouchableOpacity
+              style={styles.submitButton2}
+              onPress={()=>{
+                this.props.navigation.navigate(
+                'Quiz',
+                {
+                navTitle: this.props.title,
+                questions: this.props.questions}
+              );
+            }
+          } >
+          <Text style = {styles.submitButtonText2}> Start Quiz </Text>
+          </TouchableOpacity>
+
+        ): null
+      }
+
+      </Text>
+
+
+
 
       <Button
 
         title="Delete Deck"
         type="clear"
-
-
           onPress={() => this.deleteThisDeck()}
         />
+
+
 
         </Card>
       </View>
@@ -145,6 +154,18 @@ const styles = StyleSheet.create({
      borderRadius:20,
 
    },
+   iftexts : {
+     margin: 10,
+     marginLeft: 15,
+     marginBottom:50,
+     height: 50,
+     width:400,
+     fontSize: 15,
+     marginTop: 10,
+     borderRadius:20,
+
+   },
+
    deleteButton:{
      marginTop:100,
    },
@@ -156,7 +177,7 @@ const styles = StyleSheet.create({
       margin: 15,
       marginBottom: 10 ,
       height: 50,
-      borderRadius:20,
+      borderRadius:5,
    },
 
    submitButton2: {
@@ -165,11 +186,17 @@ const styles = StyleSheet.create({
       padding: 15,
       margin: 15,
       height: 50,
+      width:250,
       marginBottom: 50 ,
-      borderRadius:20,
+      borderRadius:5,
    },
    submitButtonText:{
       color: 'white',
+      marginLeft: 95,
+      justifyContent : "center",
+   },
+   submitButtonText2:{
+      color: 'black',
       marginLeft: 95,
       justifyContent : "center",
    }
