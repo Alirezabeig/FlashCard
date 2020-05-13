@@ -6,13 +6,7 @@ import {
   Card
 } from 'react-native-elements';
 
-import {
-  frontOpacity,
-  frontAnimatedStyle,
-  elevation,
-  elevationBack,elevationFront, backAnimatedStyle, backOpacity, value, flipCard} from './CardFlip';
-  import CardFlip from './CardFlip'
-
+import CardFlip from 'react-native-card-flip';
 
 class Quiz extends Component {
   state = {
@@ -29,16 +23,6 @@ class Quiz extends Component {
       title: navigation.state.params.navTitle
     }
   };
-
-
-
-
-  handleClick(e) {
-    e.preventDefault();
-    this.setState(prevState => ({ isFlipped: !prevState.isFlipped }));
-  }
-
-
 
   resetQuiz() {
     this.setState(() =>{
@@ -74,7 +58,7 @@ class Quiz extends Component {
     return questions;
   }
 
-  renderCard() {
+renderCard() {
     const {
       questions,
       thisQuestion,
@@ -82,8 +66,6 @@ class Quiz extends Component {
     } = this.state;
 
     const score = parseInt(( correctAnswers/questions.length) * 100);
-    //const answer= questions[thisQuestion].answer;
-    //const question =questions[thisQuestion].question;
 
     if (thisQuestion < questions.length) {
       return (
@@ -137,6 +119,7 @@ class Quiz extends Component {
     }
     return (
 
+
       <Card
         title={`You got ${correctAnswers} out of ${questions.length}
         Score: ${score}%`}
@@ -147,22 +130,6 @@ class Quiz extends Component {
           onPress={() => this.props.navigation.navigate('Deck')}
         />
 
-        <TouchableWithoutFeedback onPress={() => flipCard()} >
-            <View>
-                  <Animated.View style={[frontAnimatedStyle, styles.paperFront,{elevation: elevationFront}, {opacity: frontOpacity}]}>
-                    <Text style={{fontSize: 20,marginTop: 50, paddingLeft: 8, color: 'black',lineHeight: 20}}>
-                     Testing  Front {value} - <Text style={{fontSize: 8}}>KPI</Text>
-                    </Text>
-                      <View style={{position: "absolute", paddingTop: 3, right: 8}}>
-
-                      </View>
-                  </Animated.View>
-
-                  <Animated.View style={[backAnimatedStyle, styles.paperBack, {elevation: elevationBack}, {opacity: backOpacity}]}>
-                    <Text style={{fontSize: 20,marginTop: 50}}>Testing Back title {value}</Text>
-                  </Animated.View>
-              </View>
-        </TouchableWithoutFeedback>
 
       </Card>
 
