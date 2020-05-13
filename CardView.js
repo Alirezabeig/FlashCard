@@ -228,15 +228,15 @@ const styles = {
   },
   cardContainer: {
     width: 320,
-    height: 470,
+    height: 500,
   },
   card: {
-    width: 290,
+    width: 340,
     height: 200,
     paddding: 50,
     backgroundColor: '#FE474C',
     borderRadius: 5,
-    marginLeft:40,
+    marginLeft:15,
     margin:20,
     shadowColor: 'rgba(0,0,0,0.5)',
     shadowOffset: {

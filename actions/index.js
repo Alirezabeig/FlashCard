@@ -4,14 +4,14 @@ import {
   getDeck
 } from '../utils/api';
 
-export const FETCH_DECK_DB = 'fetch_deck_db';
-export const FETCH_DECK_INFO = 'fetch_deck_info';
+export const DECK_DB = 'fetch_deck_db';
+export const DECK_INFO = 'fetch_deck_info';
 export const DELETE_DECK = 'delete_deck';
 
 
 export function fetchDeckDB() {
   return (dispatch) => {
-    getDecks().then(data => dispatch({ type: FETCH_DECK_DB, payload: data}));
+    getDecks().then(data => dispatch({ type: DECK_DB, payload: data}));
   }
 }
 
@@ -19,7 +19,7 @@ export function getDeckDetails(entryId) {
   return (dispatch) => {
     getDeck(entryId)
       .then(cardDeck => {
-        dispatch({ type: FETCH_DECK_INFO, payload: JSON.parse(cardDeck) })
+        dispatch({ type: DECK_INFO, payload: JSON.parse(cardDeck) })
       });
   }
 }

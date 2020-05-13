@@ -73,7 +73,8 @@ export default connect(mapStateToProps,{getDeckDetails})(AddDeck)
 
 const styles = StyleSheet.create({
    container: {
-      flex:1
+      flex:1,
+      backgroundColor: '#f0f8ff',
    },
    text : {
      margin: 10,

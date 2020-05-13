@@ -6,10 +6,10 @@ import App from './app'
 //import {} from './utils/helper'
 import {connect} from 'react-redux';
 import {getDeckDetails, deleteDeck} from './actions/index';
-import { Card } from 'react-native-elements';
+import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Select from 'react-select';
-import { Button } from 'react-native-elements';
+import {Card} from 'react-native-paper'
 
 
 
@@ -49,13 +49,13 @@ class Deck extends Component {
 
       <View  >
 
-        <Card title={this.props.title} styles={styles.card} >
+        <Card title={this.props.title} style={styles.card10}>
 
               <Text style={{marginBottom: 10, textAlign: 'center'}}>
 
-                  {this.props.questions && this.props.questions.length>0
-                    ?`${this.props.questions.length} Cards`
-                    : `0 Card`
+                  {this.props.questions && (this.props.questions.length>1 || this.props.questions.length==0)
+                    ?`There are ${this.props.questions.length} Cards in this Deck.`
+                    : `There is 1 Card in thi Deck.`
                   }
                 </Text>
 
@@ -93,26 +93,19 @@ class Deck extends Component {
             }
           } >
           <Text style = {styles.submitButtonText2}> Start Quiz </Text>
-          </TouchableOpacity>
+            </TouchableOpacity>
+          ): <Text style={styles.tt}>     Add Cards so you can quize yourself.</Text>
+          }
+          </Text>
 
-        ): null
-      }
-
-      </Text>
-
-
-
-
-      <Button
-
-        title="Delete Deck"
-        type="clear"
+        <Button
+          title="Delete Deck"
+          type="clear"
           onPress={() => this.deleteThisDeck()}
         />
 
-
-
         </Card>
+
       </View>
 
     )
@@ -131,11 +124,25 @@ const styles = StyleSheet.create({
       paddingTop: 23
    },
    card: {
-     padding: 50,
-     margin: 50,
-     backgroundColor:'#a52a2a',
-     flexWrap: 'nowrap',
+     padding: 10,
+     margin: 10,
+     backgroundColor:'#faebd7',
+     borderRadius: 20,
    },
+
+   card10: {
+     margin: 10,
+     backgroundColor: '#f0f8ff',
+     borderRadius: 5,
+     padding: 20,
+     shadowColor: 'rgba(0,0,0,0.5)',
+     shadowOffset: {
+       width: 1,
+       height: 4,
+     },
+     shadowOpacity: 0.5,
+   },
+
    deckName : {
      margin: 5,
      marginLeft: 30,
@@ -159,7 +166,6 @@ const styles = StyleSheet.create({
      marginLeft: 15,
      marginBottom:50,
      height: 50,
-     width:400,
      fontSize: 15,
      marginTop: 10,
      borderRadius:20,
@@ -186,7 +192,7 @@ const styles = StyleSheet.create({
       padding: 15,
       margin: 15,
       height: 50,
-      width:250,
+      marginRight: 135,
       marginBottom: 50 ,
       borderRadius:5,
    },
@@ -198,6 +204,11 @@ const styles = StyleSheet.create({
    submitButtonText2:{
       color: 'black',
       marginLeft: 95,
+      justifyContent : "center",
+   },
+   tt:{
+      color: 'black',
+      marginLeft: 100,
       justifyContent : "center",
    }
 });

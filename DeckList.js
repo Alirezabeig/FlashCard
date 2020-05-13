@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList} from 'react-native'
 //import {} from './utils/helper'
-import {fetchDeckDB} from './actions/index'
-import { Card, Badge } from 'react-native-elements';
+import {fetchDeckDB} from './actions/index';
+import {Card} from 'react-native-paper';
 
 class DeckList extends Component {
 
@@ -29,23 +29,18 @@ class DeckList extends Component {
               }
             )}
     >
-
-
       <Card
-        style={styles.card}
-        title={item.title}
-        subtitle={`${item.questions.length} cards`}
 
+        style={styles.card10}
       >
+      <Text style={styles.tt}>{item.title}</Text>
 
-          <Text>
-            
+          <Text style={styles.tt2}>
             {
-              item.questions.length>0
+              (item.questions.length>1 || item.questions.length==0)
               ?`${item.questions.length} cards`
-              : `0 card`
+              : `1 card`
             }
-
           </Text>
 
 
@@ -94,7 +89,8 @@ const styles = StyleSheet.create({
    card: {
      padding: 10,
      margin: 2,
-     backgroundColor:'#a52a2a'
+     backgroundColor:'#a52a2a',
+     borderRadius:4,
    },
    cardName : {
      margin: 15,
@@ -102,6 +98,18 @@ const styles = StyleSheet.create({
      height: 40,
      fontSize: 20,
      marginTop: 30,
+   },
+   card10: {
+     margin: 10,
+     backgroundColor: '#f0f8ff',
+     borderRadius: 5,
+     padding: 20,
+     shadowColor: 'rgba(0,0,0,0.5)',
+     shadowOffset: {
+       width: 1,
+       height: 4,
+     },
+     shadowOpacity: 0.5,
    },
 
 
@@ -137,5 +145,17 @@ const styles = StyleSheet.create({
       color: 'white',
       marginLeft: 115,
       justifyContent : "center",
-   }
+   },
+
+   tt:{
+     fontSize: 30,
+     margin:10,
+
+   },
+
+   tt2:{
+     fontSize: 15,
+     margin:10,
+
+   },
 });

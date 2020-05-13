@@ -35,10 +35,10 @@ export default class AddDeck extends Component {
 
   render (){
     return (
+      <View style={styles.container}>
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={styles.container}>
 
-          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-              <View>
-
+            <View>
                   <Text style= {styles.cardName}>
                   Add a New Card... !
                   </Text>
@@ -63,16 +63,17 @@ export default class AddDeck extends Component {
                   <Text style = { styles.submitButtonText}> Submit </Text>
                </TouchableOpacity>
 
-            </View>
+              </View>
         </TouchableWithoutFeedback>
-
+      </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
    container: {
-      paddingTop: 23
+      backgroundColor: '#f0f8ff',
+      height: 800,
    },
    text : {
      margin: 10,
