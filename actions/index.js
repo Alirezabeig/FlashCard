@@ -31,7 +31,7 @@ export function getDeckDetails(entryId) {
 }
 
 
-export function addEntry (entry) {
+export function addEntry(entry) {
   return {
     type: ADD_ENTRY,
     entry,

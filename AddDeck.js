@@ -25,21 +25,15 @@ class AddDeck extends Component {
 
   Submit = () => {
     const title= this.state.titleText;
-
-    this.props.addEntry(title);
-    
-    if (this.state.titleText) {
-      const {titleText} = this.state;
-      saveDeckTitle(titleText);
-
-      this.setState({
-       titleText: ''
-
-     });
-     this.props.navigation.navigate('Home')
-   }
-
-  };
+    saveDeckTitle(title)
+     .then((createdDeck) => {
+       this.props.dispatch(addEntry(createdDeck));
+       this.setState(() => ({
+         titleText: ''
+       }));
+     this.props.navigation.navigate('Home');
+    });
+   };
 
 
   render (){
@@ -79,12 +73,9 @@ class AddDeck extends Component {
     )
   }
 }
-const mapStateToProps = state => {
-  const { title } = state.deckDetail ? state.deckDetail : ('');
-  return { title };
-};
 
-export default connect(mapStateToProps,{addEntry})(AddDeck)
+
+export default connect(addEntry)(AddDeck)
 
 const styles = StyleSheet.create({
    container: {

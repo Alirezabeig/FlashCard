@@ -55,7 +55,7 @@ class Deck extends Component {
 
                   {this.props.questions && (this.props.questions.length>1 || this.props.questions.length==0)
                     ?`There are ${this.props.questions.length} Cards in this Deck.`
-                    : `There is 1 Card in thi Deck.`
+                    : `There is 1 Card in this Deck.`
                   }
                 </Text>
 
@@ -94,7 +94,7 @@ class Deck extends Component {
           } >
           <Text style = {styles.submitButtonText2}> Start Quiz </Text>
             </TouchableOpacity>
-          ): <Text style={styles.tt}>     Add Cards so you can quize yourself.</Text>
+          ): <Text style={styles.tt}>Add Cards so you can quize yourself.</Text>
           }
       </View>
 
@@ -195,6 +195,7 @@ const styles = StyleSheet.create({
       marginBottom: 50 ,
       borderRadius:5,
       fontSize:10,
+      marginBottom:100,
    },
    submitButtonText:{
       color: 'white',
@@ -205,10 +206,13 @@ const styles = StyleSheet.create({
       color: 'black',
       marginLeft: 95,
       justifyContent : "center",
+
    },
    tt:{
       color: 'black',
-      marginLeft: 100,
+      marginLeft: 30,
+      marginBottom: 80,
+      marginTop:10,
       justifyContent : "center",
    }
 });
