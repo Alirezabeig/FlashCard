@@ -12,11 +12,13 @@ export const DELETE_DECK = 'delete_deck';
 export const ADD_CARD = 'add_card';
 export const ADD_ENTRY = 'ADD_ENTRY';
 
-
-const addEntry = (newDeck) => ({
-  type: 'ADD_ENTRY',
-  payload: { newDeck },
-})
+export function addEntry(newDeck) {
+  
+  return {
+    type: 'ADD_ENTRY',
+    payload: { newDeck },
+  };
+}
 
 export function fetchDeckDB() {
   return (dispatch) => {

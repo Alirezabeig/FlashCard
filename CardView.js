@@ -10,6 +10,7 @@ class Quiz extends Component {
     showQuestion: true,
     questions: this.shuffleQuestions(),
     thisQuestion: 0,
+    thisFlip:true,
     correctAnswers: 0,
     isFlipped: false,
     enabledButtons: false,
@@ -72,6 +73,7 @@ renderCard() {
     const {
       questions,
       thisQuestion,
+      thisFlip,
       correctAnswers,
       enabledButtons,
     } = this.state;
@@ -96,24 +98,31 @@ renderCard() {
 
 
 
+            <CardFlip style={styles.flipCard} duration={300} ref={card => (this.card = card)}>
+               <View>
+               <TouchableOpacity
+                   activeOpacity={1}
+                   style={[styles.card, styles.card2]}
+                   onPress={() => {this.card.flip();this.showButtons()}}>
+                   <Text style={styles.label}>Answer</Text>
+             </TouchableOpacity>
+             </View>
 
-          <CardFlip style={styles.flipCard} ref={card => (this.card = card)}>
-            <TouchableOpacity
-                activeOpacity={1}
-                style={[styles.card, styles.card2]}
-                onPress={() => {this.card.flip();this.showButtons()}}>
-                <Text style={styles.label}>Answer</Text>
-          </TouchableOpacity>
+             <View>
+             <TouchableOpacity
+                   activeOpacity={1}
+                   style={[styles.card, styles.card2]}
+                   onPress={() => {this.card.flip();this.hideButtons()}}>
+                   <Text style={styles.label}>A: {questions[thisQuestion].answer}</Text>
+             </TouchableOpacity>
+             </View>
+
+          </CardFlip>
 
 
-          <TouchableOpacity
-                activeOpacity={1}
-                style={[styles.card, styles.card2]}
-                onPress={() => {this.card.flip();this.hideButtons()}}>
-                <Text style={styles.label}>A: {questions[thisQuestion].answer}</Text>
-          </TouchableOpacity>
 
-        </CardFlip>
+
+
 
 
 
@@ -137,6 +146,7 @@ renderCard() {
                     correctAnswers: correctAnswers+1,
                     enabledButtons: false,
                   });
+
                 }}
               >
 
@@ -145,7 +155,7 @@ renderCard() {
 
               <TouchableOpacity
                 style={styles.buttonStyle10}
-                onPress={() => this.setState({ thisQuestion: thisQuestion+1,enabledButtons: false, })}
+                onPress={() => {this.setState({ thisQuestion: thisQuestion+1,enabledButtons: false, })} }
               >
               <Text style = { styles.submitButtonText1}>Incorrect</Text>
         </TouchableOpacity>
@@ -154,6 +164,7 @@ renderCard() {
         :null
         }
         </View>
+
 
 
 
@@ -170,6 +181,7 @@ renderCard() {
     const {
       questions,
       thisQuestion,
+      thisFlip,
       correctAnswers
     } = this.state;
     const score = parseInt(( correctAnswers/questions.length) * 100);
@@ -199,10 +211,6 @@ renderCard() {
 
       <View>
             {this.renderCard()}
-
-
-
-
          </View>
 
     );
