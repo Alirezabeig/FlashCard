@@ -1,12 +1,17 @@
 import {   AsyncStorage } from 'react-native';
 import {
   getDecks,
-  getDeck
+  getDeck,
+  cardAddDeck,
+  submitEntry
 } from '../utils/api';
 
 export const DECK_DB = 'fetch_deck_db';
 export const DECK_INFO = 'fetch_deck_info';
 export const DELETE_DECK = 'delete_deck';
+export const ADD_CARD = 'add_card';
+export const ADD_DECK = 'add_deck'
+
 
 
 export function fetchDeckDB() {
@@ -23,6 +28,31 @@ export function getDeckDetails(entryId) {
       });
   }
 }
+
+
+export function addDeck(entries) {
+  return (dispatch) => {
+    AsyncStorage.setItem(entries)
+      .then(getDecks().then(data => {
+          dispatch({ type: ADD_DECK, payload: data})
+        })
+        .catch(err => console.log(err)))
+      .catch(err => console.log(err));
+  }
+}
+
+
+export function addCard(entry) {
+  return (dispatch) => {
+    AsyncStorage.mergeItem(entry)
+      .then(getDeck().then(data => {
+          dispatch({ type: ADD_CARD, payload: data})
+        })
+        .catch(err => console.log(err)))
+      .catch(err => console.log(err));
+  }
+}
+
 
 export function deleteDeck(removeTitle) {
   return (dispatch) => {

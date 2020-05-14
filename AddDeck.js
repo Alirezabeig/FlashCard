@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import {View, Text, SafeAreaView, Keyboard, TouchableWithoutFeedback, Platform, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView} from 'react-native'
 //import {} from './utils/helper'
 import {saveDeckTitle} from './utils/api'
-import {getDeckDetails} from './actions/index';
-import {connect} from 'react-redux'
+import {getDeckDetails, addDeck} from './actions/index';
+import {connect} from 'react-redux';
 
 class AddDeck extends Component {
 
@@ -14,13 +14,16 @@ class AddDeck extends Component {
 
 
   Submit = () => {
+    const title= this.props.title;
     if (this.state.titleText) {
       const {titleText} = this.state;
       saveDeckTitle(titleText);
+
+      
       this.setState({
        titleText: ''
+
      });
-     this.props.getDeckDetails(titleText)
      this.props.navigation.navigate('Home')
    }
 
@@ -65,11 +68,11 @@ class AddDeck extends Component {
   }
 }
 const mapStateToProps = state => {
-  const { titleText } = state.deckDetail ? state.deckDetail : ('');
-  return { titleText};
+  const { title } = state.deckDetail ? state.deckDetail : ('');
+  return { title };
 };
 
-export default connect(mapStateToProps,{getDeckDetails})(AddDeck)
+export default connect(mapStateToProps,{AddDeck})(AddDeck)
 
 const styles = StyleSheet.create({
    container: {
