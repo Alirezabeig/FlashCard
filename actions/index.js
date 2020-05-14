@@ -10,10 +10,13 @@ export const DECK_DB = 'fetch_deck_db';
 export const DECK_INFO = 'fetch_deck_info';
 export const DELETE_DECK = 'delete_deck';
 export const ADD_CARD = 'add_card';
-export const ADD_DECK = 'add_deck';
-export const ADD_ENTRY = 'ADD_ENTRY'
+export const ADD_ENTRY = 'ADD_ENTRY';
 
 
+const addEntry = (newDeck) => ({
+  type: 'ADD_ENTRY',
+  payload: { newDeck },
+})
 
 export function fetchDeckDB() {
   return (dispatch) => {
@@ -31,12 +34,7 @@ export function getDeckDetails(entryId) {
 }
 
 
-export function addEntry(entry) {
-  return {
-    type: ADD_ENTRY,
-    entry,
-  }
-}
+
 
 
 export function addCard(entry) {
