@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
-import {View, Text, SafeAreaView, Keyboard, TouchableWithoutFeedback, Platform, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView} from 'react-native'
+import {View,
+  Text,
+  SafeAreaView,
+  Keyboard,
+  TouchableWithoutFeedback,
+  Platform,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+  KeyboardAvoidingView} from 'react-native'
 //import {} from './utils/helper'
 import {saveDeckTitle} from './utils/api'
 import {getDeckDetails, addDeck} from './actions/index';
 import {connect} from 'react-redux';
+import {addEntry} from './actions/index'
 
 class AddDeck extends Component {
 
@@ -14,12 +24,14 @@ class AddDeck extends Component {
 
 
   Submit = () => {
-    const title= this.props.title;
+    const title= this.state.titleText;
+
+    this.props.addEntry(title);
+    
     if (this.state.titleText) {
       const {titleText} = this.state;
       saveDeckTitle(titleText);
 
-      
       this.setState({
        titleText: ''
 
@@ -72,7 +84,7 @@ const mapStateToProps = state => {
   return { title };
 };
 
-export default connect(mapStateToProps,{AddDeck})(AddDeck)
+export default connect(mapStateToProps,{addEntry})(AddDeck)
 
 const styles = StyleSheet.create({
    container: {

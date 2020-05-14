@@ -77,10 +77,10 @@ class Deck extends Component {
           <Text style = { styles.submitButtonText}> Add Card </Text>
       </TouchableOpacity>
 
-
-      <Text style={styles.iftexts}>
+    <View>
       {this.props.questions && this.props.questions.length>0
         ? (
+
           <TouchableOpacity
               style={styles.submitButton2}
               onPress={()=>{
@@ -96,7 +96,7 @@ class Deck extends Component {
             </TouchableOpacity>
           ): <Text style={styles.tt}>     Add Cards so you can quize yourself.</Text>
           }
-          </Text>
+      </View>
 
         <Button
           title="Delete Deck"
@@ -166,8 +166,8 @@ const styles = StyleSheet.create({
      marginLeft: 15,
      marginBottom:50,
      height: 50,
-     fontSize: 15,
-     marginTop: 10,
+     fontSize: 30,
+     marginTop: 30,
      borderRadius:20,
 
    },
@@ -192,9 +192,9 @@ const styles = StyleSheet.create({
       padding: 15,
       margin: 15,
       height: 50,
-      marginRight: 135,
       marginBottom: 50 ,
       borderRadius:5,
+      fontSize:10,
    },
    submitButtonText:{
       color: 'white',

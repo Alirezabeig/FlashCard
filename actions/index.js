@@ -10,7 +10,8 @@ export const DECK_DB = 'fetch_deck_db';
 export const DECK_INFO = 'fetch_deck_info';
 export const DELETE_DECK = 'delete_deck';
 export const ADD_CARD = 'add_card';
-export const ADD_DECK = 'add_deck'
+export const ADD_DECK = 'add_deck';
+export const ADD_ENTRY = 'ADD_ENTRY'
 
 
 
@@ -30,14 +31,10 @@ export function getDeckDetails(entryId) {
 }
 
 
-export function addDeck(entries) {
-  return (dispatch) => {
-    AsyncStorage.setItem(entries)
-      .then(getDecks().then(data => {
-          dispatch({ type: ADD_DECK, payload: data})
-        })
-        .catch(err => console.log(err)))
-      .catch(err => console.log(err));
+export function addEntry (entry) {
+  return {
+    type: ADD_ENTRY,
+    entry,
   }
 }
 
