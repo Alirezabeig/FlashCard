@@ -49,12 +49,18 @@ class Deck extends Component {
 
       <View  >
 
-        <Card title={this.props.title} style={styles.card10}>
+        <Card style={styles.card10}>
+
+          <Text style={{marginBottom: 20, textAlign: 'center', fontSize:30}}>
+          {this.props.title
+            ?`# ${this.props.title} `
+            : `..`
+          }
+          </Text>
 
               <Text style={{marginBottom: 10, textAlign: 'center'}}>
-
                   {this.props.questions && (this.props.questions.length>1 || this.props.questions.length==0)
-                    ?`There are ${this.props.questions.length} Cards in this Deck.`
+                    ?`There are ${this.props.questions.length} Cards in ${this.props.title} Deck.`
                     : `There is 1 Card in this Deck.`
                   }
                 </Text>
