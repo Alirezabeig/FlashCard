@@ -263,7 +263,7 @@ const styles = {
 
      backgroundColor: '#ffa07a',
      padding: 15,
-     margin: 5,
+     margin: 10,
      height: 50,
      borderRadius:5,
   },
@@ -356,7 +356,7 @@ const styles = {
     width: 340,
     height: 200,
     paddding: 50,
-    backgroundColor: '#FE474C',
+    backgroundColor: '#F5FCFF',
     borderRadius: 5,
     marginLeft:15,
     margin:20,
@@ -378,7 +378,7 @@ const styles = {
     marginLeft: 85,
     marginTop: 50,
     fontSize: 20,
-    color: 'white',
+    color: 'black',
     borderRadius:20,
   },
   cont: {

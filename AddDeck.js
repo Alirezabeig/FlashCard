@@ -13,7 +13,7 @@ import {View,
 import {saveDeckTitle} from './utils/api'
 import {getDeckDetails, addDeck} from './actions/index';
 import {connect} from 'react-redux';
-import {addEntry} from './actions/index'
+import {addEntry} from './actions/index';
 
 class AddDeck extends Component {
 
@@ -74,8 +74,9 @@ class AddDeck extends Component {
   }
 }
 
+const mapDispatchToProps = { addEntry };
 
-export default connect(addEntry)(AddDeck)
+export default connect(null, mapDispatchToProps)(AddDeck);
 
 const styles = StyleSheet.create({
    container: {
