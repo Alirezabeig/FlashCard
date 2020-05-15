@@ -1,21 +1,18 @@
 
-import { RECEIVE_ENTRIES, ADD_ENTRY } from '../actions'
+import {
+  RECEIVE_ENTRIES,
+  ADD_CARD
+} from './actions/index'
+  const INITIAL_STATE = {};
 
-function entries (state = {}, action) {
-  switch (action.type) {
-    case RECEIVE_ENTRIES :
-      return {
-        ...state,
-        ...action.entries,
-      }
-    case ADD_ENTRY :
-      return {
-        ...state,
-        ...action.entry
-      }
-    default :
-      return state
-  }
-}
+  export default (state = INITIAL_STATE, action) => {
+    switch (action.type) {
+      case DECK_DB:
+        return action.payload;
+      case ADD_CARD:
+        return action.payload;
 
-export default entries 
+      default:
+        return state;
+    }
+  };

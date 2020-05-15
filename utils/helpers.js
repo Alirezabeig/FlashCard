@@ -58,9 +58,15 @@ return typeof metric === "undefined"
     : info[metric];
 }
 
-export function clearLocalNotification () {
-  return AsyncStorage.removeItem(NOTIFICATION_KEY)
-    .then(Notifications.cancelAllScheduledNotificationsAsync)
+export function clearLocalNotification() {
+  return AsyncStorage.removeItem(NOTIFICATION_KEY).then(async () => {
+    try {
+      Notifications.cancelAllScheduledNotificationsAsync();
+    } catch (error) {
+      // treat error here
+      console.log(error);
+    }
+  });
 }
 
 function createNotification () {

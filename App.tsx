@@ -12,7 +12,7 @@ import { createStackNavigator} from '@react-navigation/stack';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
-import reducer from './Reducers/index';
+import reducer from './Reducers';
 import {
   getDailyReminderValue,
   clearLocalNotification,

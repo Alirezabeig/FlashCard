@@ -33,7 +33,7 @@ class AddDeck extends Component {
     const title= this.state.titleText;
 
     saveDeckTitle(title);
-    this.props.addEntry();
+    this.props.addEntry(title);
      this.props.navigation.navigate('Home');
 
      this.setState(() => ({

@@ -8,7 +8,7 @@ import Entries from './AddDeck'
 export default combineReducers({
   decks: DeckR,
   deckDetail: Deck,
-  addCARDs: AddCard,
+  addCard: AddCard,
   addEntry: Entries,
 
 });
