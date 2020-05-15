@@ -11,7 +11,7 @@ import {View,
   KeyboardAvoidingView} from 'react-native'
 //import {} from './utils/helper'
 import {saveDeckTitle} from './utils/api'
-import {getDeckDetails, addDeck} from './actions/index';
+import {getDeckDetails} from './actions/index';
 import {connect} from 'react-redux';
 import {addEntry} from './actions/index';
 import {
@@ -19,6 +19,8 @@ import {
   clearLocalNotification,
   setLocalNotification
 } from './utils/helpers'
+
+import { generateUID } from './utils/helpers'
 
 
 class AddDeck extends Component {
@@ -28,22 +30,17 @@ class AddDeck extends Component {
   };
 
 
-
   Submit = () => {
-    const title= this.state.titleText;
-
-    saveDeckTitle(title);
-    this.props.addEntry(title);
-     this.props.navigation.navigate('Home');
-
-     this.setState(() => ({
-         title: ""
-       }));
-
-       clearLocalNotification()
-         .then(setLocalNotification)
-
-   };
+      const title= this.state.titleText;
+      saveDeckTitle(title);
+      this.props.addEntry(title);
+       this.props.navigation.navigate('Home');
+       this.setState(() => ({
+           title: ""
+         }));
+         clearLocalNotification()
+           .then(setLocalNotification)
+     };
 
 
   render (){

@@ -6,20 +6,21 @@ import {
   submitEntry
 } from '../utils/api';
 
-export const DECK_DB = 'fetch_deck_db';
 export const DECK_INFO = 'fetch_deck_info';
 export const DELETE_DECK = 'delete_deck';
 export const ADD_CARD = 'add_card';
 export const ADD_ENTRY = 'ADD_ENTRY';
+export const ADD_DECK = 'ADD_DECK';
+export const DECK_DB = 'fetch_deck_db';
 
 export function addEntry(newDeck) {
   console.log('called addEntry action');
   return {
     type: 'ADD_ENTRY',
     payload: { newDeck },
-
   };
 }
+
 
 export function fetchDeckDB() {
   return (dispatch) => {
