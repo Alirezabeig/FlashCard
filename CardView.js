@@ -39,6 +39,7 @@ class Quiz extends Component {
     this.setState(() =>{
       return {
         enabledButtons: true,
+
       }
     });
     //this.resetNotification()
@@ -48,6 +49,7 @@ class Quiz extends Component {
     this.setState(() =>{
       return {
         enabledButtons: false,
+        thisFlip :false
       }
     });
     //this.resetNotification()
@@ -97,33 +99,71 @@ renderCard() {
           </Card>
 
 
-
+          <View>
             <CardFlip style={styles.flipCard} duration={300} ref={card => (this.card = card)}>
-               <View>
-               <TouchableOpacity
-                   activeOpacity={1}
-                   style={[styles.card, styles.card2]}
-                   onPress={() => {this.card.flip();this.showButtons()}}>
-                   <Text style={styles.label}>Answer</Text>
-             </TouchableOpacity>
-             </View>
 
-             <View>
-             <TouchableOpacity
-                   activeOpacity={1}
-                   style={[styles.card, styles.card2]}
-                   onPress={() => {this.card.flip();this.hideButtons()}}>
-                   <Text style={styles.label}>A: {questions[thisQuestion].answer}</Text>
-             </TouchableOpacity>
-             </View>
+              <View>
+                  <TouchableOpacity
+                      activeOpacity={1}
+                      style={[styles.card, styles.card2]}
+                      onPress={() => {this.card.flip();this.showButtons()}}>
+                      <Text style={styles.label}>Answer</Text>
+                  </TouchableOpacity>
+                </View>
+
+                <View>
+                {enabledButtons===true
+                ?
+                <View>
+                <Text style={styles.label1}>A: {questions[thisQuestion].answer}</Text>
+                  <View style={styles.container}>
+
+                    <TouchableOpacity
+                        style={styles.buttonStyle1}
+                        onPress={() => {
+                          this.setState({
+                            thisQuestion: thisQuestion+1,
+                            correctAnswers: correctAnswers+1,
+                            enabledButtons: false,
+                          });
+                          this.card.flip()
+                        }}
+                      >
+                      <Text style = { styles.submitButtonText1}>Correct</Text>
+                    </TouchableOpacity>
+
+                      <TouchableOpacity
+                        style={styles.buttonStyle10}
+                        onPress={() => {this.setState({
+                          thisQuestion: thisQuestion+1,
+                          enabledButtons: false,
+                          })
+                          this.card.flip()
+                        }
+                       }
+                          >
+                        <Text style = { styles.submitButtonText1}>Incorrect</Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                :null
+                }
+                </View>
+
+
+
+                <View>
+                <TouchableOpacity
+                      activeOpacity={1}
+                      style={[styles.card, styles.card2]}
+                      onPress={() => {this.card.flip();this.hideButtons()}}>
+                      <Text style={styles.label}>A: {questions[thisQuestion].answer}</Text>
+                </TouchableOpacity>
+                </View>
 
           </CardFlip>
 
-
-
-
-
-
+        </View>
 
 
         <View>
@@ -135,35 +175,6 @@ renderCard() {
         </View>
 
 
-        <View>
-        {enabledButtons===true
-        ?<View style={styles.container}>
-        <TouchableOpacity
-                style={styles.buttonStyle1}
-                onPress={() => {
-                  this.setState({
-                    thisQuestion: thisQuestion+1,
-                    correctAnswers: correctAnswers+1,
-                    enabledButtons: false,
-                  });
-
-                }}
-              >
-
-              <Text style = { styles.submitButtonText1}>Correct</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                style={styles.buttonStyle10}
-                onPress={() => {this.setState({ thisQuestion: thisQuestion+1,enabledButtons: false, })} }
-              >
-              <Text style = { styles.submitButtonText1}>Incorrect</Text>
-        </TouchableOpacity>
-        </View>
-
-        :null
-        }
-        </View>
 
 
 
@@ -221,10 +232,20 @@ const styles = {
 
 
   numberRemaining: {
-    textAlign: 'center',
-    marginBottom: 10,
-    margin: 10,
+    flex:3,
+    width: '100%',
+    height: 100,
+    padding: 50,
+    backgroundColor: '#f0f8ff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute', //Here is the trick
+    bottom: -200,
+
   },
+
+
+
   text : {
     margin: 10,
     marginLeft: 20,
@@ -327,8 +348,8 @@ const styles = {
     backgroundColor: '#F5FCFF',
   },
   flipCard: {
-    width: 300,
-    height: 220,
+    width: 360,
+    height: 250,
   },
   card: {
     width: 340,
@@ -354,9 +375,17 @@ const styles = {
   label: {
     textAlign: 'center',
     fontSize: 20,
-    padding:50,
+    padding:40,
     fontFamily: 'System',
     color: '#ffffff',
+    backgroundColor: 'transparent',
+  },
+  label1: {
+    textAlign: 'center',
+    fontSize: 20,
+    padding:50,
+    fontFamily: 'System',
+    color: '#000000',
     backgroundColor: 'transparent',
   },
 

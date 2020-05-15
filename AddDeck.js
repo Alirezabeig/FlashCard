@@ -26,8 +26,8 @@ class AddDeck extends Component {
   Submit = () => {
     const title= this.state.titleText;
     saveDeckTitle(title)
-     .then((newDeck) => {
-       this.props.addEntry(newDeck);
+     .then((title) => {
+       this.props.addEntry(title);
        this.setState(() => ({
          titleText: ''
        }));
