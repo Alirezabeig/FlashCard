@@ -5,13 +5,13 @@ const InitialState ={
   decks: {}
 };
 
-function Entries (state = InitialState, action) {
+function Entries (state = {}, action) {
   switch (action.type) {
    case ADD_ENTRY:
      console.log('called ADD_ENTRY reducer', state, action.payload.newDeck);
      return {
        ...state,
-       decks: [...state.decks, action.payload.entry],
+       decks: [...state.decks, action.payload.newDeck],
      };
    default:
      return {
