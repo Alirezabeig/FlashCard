@@ -13,7 +13,9 @@ export const ADD_CARD = 'add_card';
 export const ADD_ENTRY = 'ADD_ENTRY';
 
 export function addEntry(newDeck) {
+  console.log('called addEntry action');
   return {
+
     type: 'ADD_ENTRY',
     payload: { newDeck },
   };

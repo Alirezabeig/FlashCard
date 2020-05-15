@@ -3,7 +3,7 @@ import {
   DELETE_DECK,
 } from '../actions/index';
 
-const INITIAL_STATE = {};
+const INITIAL_STATE = [];
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -11,7 +11,7 @@ export default (state = INITIAL_STATE, action) => {
       return action.payload;
     case DELETE_DECK:
       return action.payload;
-  
+
     default:
       return state;
   }

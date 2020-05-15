@@ -13,6 +13,11 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import reducer from './Reducers/index';
+import {
+  getDailyReminderValue,
+  clearLocalNotification,
+  setLocalNotification
+} from './utils/helpers'
 
 const Tab = createBottomTabNavigator();
 function Tabs (){
@@ -48,7 +53,9 @@ function Tabs (){
 const Stack = createStackNavigator();
 
 export default function App() {
-
+  //componentDidMount(){
+    //setLocalNotification()
+  //};
   const store = createStore(reducer, {}, applyMiddleware(ReduxThunk));
   return (
     <Provider store={store}>
