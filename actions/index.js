@@ -17,6 +17,7 @@ export function addEntry(newDeck) {
   return {
     type: 'ADD_ENTRY',
     payload: { newDeck },
+
   };
 }
 
@@ -34,10 +35,6 @@ export function getDeckDetails(entryId) {
       });
   }
 }
-
-
-
-
 
 export function addCard(entry) {
   return (dispatch) => {

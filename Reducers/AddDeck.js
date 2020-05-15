@@ -1,12 +1,18 @@
-import {ADD_ENTRY} from '../actions/index'
+import {ADD_ENTRY, DECK_DB,} from '../actions/index'
 
 
-const InitialState ={
-  decks: {}
-};
+const initState = {
+    decks: {},
+    deck: {
+        title: '',
+    }
+}
 
-function Entries (state = {}, action) {
+function Entries (state = initState, action) {
   switch (action.type) {
+      case DECK_DB:
+        return action.payload;
+
    case ADD_ENTRY:
      console.log('called ADD_ENTRY reducer', state, action.payload.newDeck);
      return {
@@ -16,6 +22,7 @@ function Entries (state = {}, action) {
    default:
      return {
        ...state,
+
      };
  }
 }
