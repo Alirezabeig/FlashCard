@@ -25,14 +25,13 @@ class AddDeck extends Component {
 
   Submit = () => {
     const title= this.state.titleText;
-    saveDeckTitle(title)
-     .then((title) => {
-       this.props.addEntry(title);
-       this.setState(() => ({
-         titleText: ''
-       }));
+    this.props.addEntry(title);
+    saveDeckTitle(title);
      this.props.navigation.navigate('Home');
-    });
+
+     this.setState(() => ({
+         title: ""
+       }));
    };
 
 
@@ -73,9 +72,9 @@ class AddDeck extends Component {
     )
   }
 }
-
-const mapDispatchToProps = { addEntry };
-
+const mapDispatchToProps = dispatch => ({
+  addEntry: (entry) => dispatch(addEntry(entry))
+});
 export default connect(null, mapDispatchToProps)(AddDeck);
 
 const styles = StyleSheet.create({

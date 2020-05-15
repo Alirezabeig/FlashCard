@@ -2,10 +2,10 @@ import {ADD_ENTRY} from '../actions/index'
 
 
 const initialState ={
-  decks: []
+  decks: {}
 };
 
-function entries (state = {}, action) {
+function Entries (state = {}, action) {
   switch (action.type) {
     case ADD_ENTRY :
       return {
@@ -23,4 +23,4 @@ function entries (state = {}, action) {
   }
 }
 
-export default entries
+export default Entries
