@@ -5,7 +5,7 @@ import Deck from './Deck';
 import Entries from './AddDeck'
 
 export default combineReducers({
-  decks: DeckR,
+  deckR: DeckR,
   deckDetail: Deck,
   addEntry: Entries,
 

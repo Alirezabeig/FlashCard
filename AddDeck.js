@@ -14,6 +14,7 @@ import {saveDeckTitle} from './utils/api'
 import {getDeckDetails} from './actions/index';
 import {connect} from 'react-redux';
 import {addEntry} from './actions/index';
+
 import {
   getDailyReminderValue,
   clearLocalNotification,
@@ -35,6 +36,7 @@ class AddDeck extends Component {
       saveDeckTitle(title);
       this.props.addEntry(title);
        this.props.navigation.navigate('Home');
+
        this.setState(() => ({
            title: ""
          }));

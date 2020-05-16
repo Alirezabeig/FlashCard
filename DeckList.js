@@ -66,7 +66,7 @@ class DeckList extends Component {
 };
 
 const mapStateToProps = state => {
-  const DBdata = state.decks;
+  const DBdata = state.deckR;
 
   return { DBdata };
 };

@@ -25,7 +25,6 @@ import {Card} from 'react-native-paper'
 
 class Deck extends Component {
 
-
   componentDidMount() {
     this.props.getDeckDetails(this.props.route.params.entryId);
   }
