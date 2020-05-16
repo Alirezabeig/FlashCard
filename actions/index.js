@@ -3,49 +3,72 @@ import {
   getDecks,
   getDeck,
   cardAddDeck,
-  submitEntry
+  submitEntry,
+  retrieveDecks
 } from '../utils/api';
+
+import keyMirror from "keymirror";
+
+export const ActionTypes = keyMirror({
+  DECK_DB: null,
+  CREATE_DECK: null,
+  CREATE_CARD: null
+});
 
 export const DECK_INFO = 'fethc_deck_info';
 export const DELETE_DECK = 'delete_deck';
-export const ADD_CARD = 'add_card';
 export const ADD_ENTRY = 'ADD_ENTRY';
 export const ADD_DECK = 'ADD_DECK';
-export const DECK_DB = 'fethc_deck_db';
+//export const DECK_DB = 'fethc_deck_db';
 
 
-export function fetchDeckDB() {
-  console.log('called DECK_DBs');
+export function handleGetAllDecks() {
+  console.log('Get All Decks');
   return (dispatch) => {
-    getDecks().then(data => dispatch({ type: DECK_DB, payload: data}));
+      return retrieveDecks()
+        .then(decks => {
+          dispatch(getAllDecks(decks));
+      })
   }
 }
 
-export function addEntry(id,title) {
+export function getAllDecks(decks) {
+    return {
+        type: ActionTypes.DECK_DB,
+        decks
+    }
+}
+
+export function handleAddDecks(deckTitle){
+  return (dispatch)=> {
+    return saveDeckTitle(deckTitle)
+      .then((deck)=> {
+        dispatch(addEntry(deck))
+      })
+  }
+  }
+
+export function addEntry(deck) {
   console.log('addEntry action');
   return {
     type: 'ADD_ENTRY',
-    id,
-    title,
-
+    deck
   };
 }
-
-export function addCard(newDeck, question, answer) {
-  console.log('called add-Card action');
-  return {
-    type: ADD_CARD,
-    payload: { newDeck,question,answer },
-  };
-}
-
 
 export function getDeckDetails(entryId) {
   return (dispatch) => {
     getDeck(entryId)
       .then(cardDeck => {
-        dispatch({ type: DECK_INFO, payload: JSON.parse(cardDeck) })
+        dispatch(deckdetails())
       });
+  }
+}
+
+export function deckdetails(){
+  return {
+    type: 'DECK_INFO',
+    deck,
   }
 }
 

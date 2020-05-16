@@ -10,7 +10,7 @@ import {View,
   TouchableOpacity,
   KeyboardAvoidingView} from 'react-native'
 //import {} from './utils/helper'
-import {saveDeckTitle} from './utils/api'
+import {saveDeck} from './utils/api'
 import {getDeckDetails} from './actions/index';
 import {connect} from 'react-redux';
 import {addEntry} from './actions/index';
@@ -30,12 +30,12 @@ class AddDeck extends Component {
     titleText: '',
 
   };
-
-  _addEntryObject = () => ({
+  _DeckObject = () => ({
       id: generateId(),
-      title: this.state.titleText,
-      questions: []
+      title: this.state.input,
+      cards: []
     })
+
 
     handleInputChange = titleText => {
       this.setState(() => ({
@@ -44,13 +44,12 @@ class AddDeck extends Component {
  };
 
   Submit = () => {
-      deck= this._addEntryObject();
-      const title= this.state.titleText;
-      this.props.addEntry(title,title);
-      saveDeckTitle(title);
+      deck = this._DeckObject();
+      this.props.addEntry(deck.id,deck.title);
+      saveDeck(deck);
        this.props.navigation.navigate('Home');
 
-      
+
          clearLocalNotification()
            .then(setLocalNotification)
      };

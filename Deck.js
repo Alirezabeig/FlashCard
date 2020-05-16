@@ -116,10 +116,11 @@ class Deck extends Component {
     )
   }
 }
-const mapStateToProps = state => {
-  const { title, questions } = state.deckDetail ? state.deckDetail : ('', []);
-  return { title, questions };
-};
+function mapStateToProps(state) {
+  return {
+    decks: state
+  }
+}
 
 
 export default connect(mapStateToProps,{ deleteDeck, getDeckDetails})(Deck)

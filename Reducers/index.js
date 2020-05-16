@@ -1,12 +1,32 @@
+import {
+  ADD_ENTRY,
+  DECK_DB,
+  DELETE_DECK,
+  ADD_CARD_TO_DECK,
+  DECK_INFO,
+} from '../actions/index'
 
-import { combineReducers } from 'redux';
-import DeckR from './DeckR';
-import Deck from './Deck';
-import Entries from './AddDeck'
+export default function decks(state = {}, action) {
+    switch (action.type) {
+        case DECK_DB:
+            return {
+                ...state,
+                ...action.decks
+            }
+        case ADD_ENTRY:
+            const { deck } = action;
+            return {
+                ...state,
+                [deck.title]: deck,
+            }
+        case DECK_INFO:
+            return action.payload;
+        case ADD_CARD_TO_DECK:
 
-export default combineReducers({
-  deckR: DeckR,
-  deckDetail: Deck,
-  addEntry: Entries,
-
-});
+        case DELETE_DECK:
+        console.log('DELETE_DECK -REDUCER');
+          return action.payload;
+        default:
+            return state;
+    }
+}

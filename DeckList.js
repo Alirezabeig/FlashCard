@@ -1,78 +1,75 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList} from 'react-native'
-//import {} from './utils/helper'
-import {fetchDeckDB} from './actions/index';
+import {handleGetAllDecks} from './actions/index';
 import {Card} from 'react-native-paper';
+import { retrieveDecks } from "./utils/api";
+
 
 class DeckList extends Component {
 
+  state = {
+      ready: false
+    };
+
   componentDidMount(){
-    this.props.fetchDeckDB();
+    retrieveDecks()
+     .then(decks => this.props.handleGetAllDecks(decks))
+     .then(() => {
+       this.setState({ ready: true });
+     });
   }
 
-  componentDidUpdate(prevProps) {
-  // Typical usage (don't forget to compare props):
-  if (this.props.data !== prevProps.data) {
-    this.fetchDeckDB(this.props.data);
-  }
 
-}
+render() {
+  const { decks, navigation } = this.props;
 
-  renderItem = ({ item }) =>
-    <TouchableOpacity
-      onPress={() => this.props.navigation.navigate(
-              'Deck',
-              {
-                entryId: item.key,
-                navTitle: item.title
-              }
-            )}
-    >
-      <Card
-
-        style={styles.card10}
-      >
-      <Text style={styles.tt}>{item.title}</Text>
-
-          <Text style={styles.tt2}>
-            {
-              (item.questions.length>1 || item.questions.length==0)
-              ?`${item.questions.length} cards`
-              : `1 card`
-            }
-          </Text>
+  const SummaryDeck = ({ id, title, navigation }) => (
+  <TouchableOpacity
+    style={styles.container}
+    onPress={() =>
+      navigation.navigate("Deck", { deckId: id, title: title })
+    }
+  >
+    <Text style={styles.title}>{title}</Text>
+  </TouchableOpacity>
+);
 
 
-
-      </Card>
-
-    </TouchableOpacity>;
-
-  render (){
-    return (
-      <View style={styles.containerStyle} >
-        {this.props.DBdata.length > 0
-          ?
-          <FlatList
-            data={this.props.DBdata}
-            renderItem={this.renderItem}
-          />
-          : <Card title="Create a deck to get started!"/>
-        }
+    return Object.values(decks).length > 0 ? (
+      <View style={styles.container}>
+        <FlatList
+          data={Object.values(decks)}
+          renderItem={({ item }) => (
+            <SummaryDeck
+              id={item.id}
+              title={item.title}
+              navigation={this.props.navigation}
+            />
+          )}
+          keyExtractor={(item, index) => item.title}
+        />
+      </View>
+    ) : (
+      <View style={styles.blank}>
+        <Text style={{ fontSize: 18 }}>No decks yet. Add Deck.</Text>
       </View>
     );
+
+}
+}
+
+
+function mapStateToProps(state) {
+  return {
+    decks: state,
   }
-};
+}
+const mapDispatchToProps = dispatch =>({
+  handleGetAllDecks:decks => dispatch(handleGetAllDecks(decks))
+})
 
-const mapStateToProps = state => {
-  const DBdata = state.deckR;
-
-  return { DBdata };
-};
-
-export default connect(mapStateToProps, { fetchDeckDB })(DeckList);
-
+export default connect(mapStateToProps, mapDispatchToProps)(DeckList);
 
 const styles = StyleSheet.create({
    container: {
