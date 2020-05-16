@@ -21,25 +21,36 @@ import {
   setLocalNotification
 } from './utils/helpers'
 
-import { generateUID } from './utils/helpers'
+import { generateId } from './utils/helpers'
 
 
 class AddDeck extends Component {
 
   state= {
     titleText: '',
+
   };
 
+  _addEntryObject = () => ({
+      id: generateId(),
+      title: this.state.titleText,
+      questions: []
+    })
+
+    handleInputChange = titleText => {
+      this.setState(() => ({
+          titleText
+        }));
+ };
 
   Submit = () => {
+      deck= this._addEntryObject();
       const title= this.state.titleText;
+      this.props.addEntry(title,title);
       saveDeckTitle(title);
-      this.props.addEntry(title);
        this.props.navigation.navigate('Home');
 
-       this.setState(() => ({
-           title: ""
-         }));
+      
          clearLocalNotification()
            .then(setLocalNotification)
      };
@@ -62,7 +73,7 @@ class AddDeck extends Component {
                 <TextInput
                 style={styles.input}
                 placeholder=" Enter Deck Name"
-                onChangeText = {titleText => this.setState ({ titleText}) }
+                onChangeText = {this.handleInputChange}
                 value= {this.state.titleText }
               />
 
@@ -83,7 +94,7 @@ class AddDeck extends Component {
   }
 }
 const mapDispatchToProps = dispatch => ({
-  addEntry: (entry) => dispatch(addEntry(entry))
+  addEntry: (id, deckTitle) => dispatch(addEntry(id, deckTitle))
 });
 export default connect(null, mapDispatchToProps)(AddDeck);
 

@@ -21,11 +21,12 @@ export function fetchDeckDB() {
   }
 }
 
-export function addEntry(newDeck) {
+export function addEntry(id,title) {
   console.log('addEntry action');
   return {
     type: 'ADD_ENTRY',
-    payload:{newDeck},
+    id,
+    title,
 
   };
 }

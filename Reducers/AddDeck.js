@@ -4,22 +4,28 @@ import {
 } from '../actions/index'
 
 const inititialState = {
-    decks: [],
+    decks: {},
     deck: {
-        title: '',
+      key:'',
+      title:'',
     }
 }
-function Entries (state = inititialState, action) {
+function Entries (state = null, action) {
   switch (action.type) {
       case DECK_DB:
       console.log('DECK_DB Enter');
-        return { decks:action.payload,
-        }
-      case ADD_ENTRY:
-        console.log('ADD_ENTRY Reducer', state, action.payload.newDeck);
         return {
           ...state,
-          decks: [...state.decks, action.payload.newDeck],
+          ...action.decks
+        }
+      case ADD_ENTRY:
+        console.log('ADD_ENTRY Reducer', state, action.payload);
+        return {
+          ...state,
+          [action.title]: {
+          key: action.title,
+          title: action.title,
+        }
      };
    default:
      return {
