@@ -26,12 +26,12 @@ render() {
 
   const SummaryDeck = ({ id, title, navigation }) => (
   <TouchableOpacity
-    style={styles.container}
+    style={styles.card10}
     onPress={() =>
       navigation.navigate("Deck", { deckId: id, title: title })
     }
   >
-    <Text style={styles.title}>{title}</Text>
+    <Text style={styles.cardName}>{title}</Text>
   </TouchableOpacity>
 );
 
@@ -73,7 +73,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(DeckList);
 
 const styles = StyleSheet.create({
    container: {
-      paddingTop: 23
+      paddingTop: 0,
    },
    text : {
      margin: 10,
@@ -90,14 +90,13 @@ const styles = StyleSheet.create({
      borderRadius:4,
    },
    cardName : {
-     margin: 15,
-     marginLeft: 30,
+     margin: 5,
      height: 40,
      fontSize: 20,
-     marginTop: 30,
    },
    card10: {
      margin: 10,
+     height: 80,
      backgroundColor: '#f0f8ff',
      borderRadius: 5,
      padding: 20,

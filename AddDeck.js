@@ -10,7 +10,7 @@ import {View,
   TouchableOpacity,
   KeyboardAvoidingView} from 'react-native'
 //import {} from './utils/helper'
-import {saveDeck} from './utils/api'
+import {saveDeck, saveDeckTitle} from './utils/api'
 import {getDeckDetails} from './actions/index';
 import {connect} from 'react-redux';
 import {addEntry} from './actions/index';

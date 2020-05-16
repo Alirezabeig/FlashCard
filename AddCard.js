@@ -12,6 +12,9 @@ export default class AddDeck extends Component {
       }
 
       submit=() => {
+
+        deckId= this.props.navigation.getParam("deckID");
+        
         if (this.state.questionInput && this.state.answerInput){
           const {questionInput,answerInput}=this.state;
           const title= this.props.route.params.title;
@@ -24,7 +27,7 @@ export default class AddDeck extends Component {
           cardAddDeck(title, cardInfo);
           //Add this card to the  - Connect to Util/API
 
-          
+
           this.setState({
             questionInput:'',
             answerInput:'',

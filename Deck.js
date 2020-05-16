@@ -12,22 +12,7 @@ import Select from 'react-select';
 import {Card} from 'react-native-paper'
 
 
-
- AddCard = ()=> {
- this.props.navigation.navigate(
-   'AddCard',
-   {
-    navTitle: this.props.title,
-    title: this.props.title
-        }
- );
-}
-
 class Deck extends Component {
-
-  componentDidMount() {
-    this.props.getDeckDetails(this.props.route.params.entryId);
-  }
 
 
   deleteThisDeck() {
@@ -37,13 +22,21 @@ class Deck extends Component {
 
    }
 
-  static navigationOptions = ({ navigation }) => {
-      return {
-        title: navigation.state.params.navTitle
-      }
-    };
+
+
+     AddCard = ()=> {
+     this.props.navigation.navigate(
+       'AddCard',
+       {
+        deckId:deck.id
+            }
+     );
+    }
+
 
   render (){
+
+    const {navigation, deck}=this.props;
     return (
 
       <View  >
@@ -51,18 +44,18 @@ class Deck extends Component {
         <Card style={styles.card10}>
 
           <Text style={{marginBottom: 20, textAlign: 'center', fontSize:30}}>
-          {this.props.title
-            ?`# ${this.props.title} `
+          {deck.title
+            ?`# ${deck.title} `
             : `..`
           }
           </Text>
 
               <Text style={{marginBottom: 10, textAlign: 'center'}}>
-                  {this.props.questions && (this.props.questions.length>1 || this.props.questions.length==0)
-                    ?`There are ${this.props.questions.length} Cards in ${this.props.title} Deck.`
+                  {this.props.cards && (this.props.cards.length>1 || this.props.cards.length==0)
+                    ?`There are ${this.props.cards.length} Cards in ${this.props.title} Deck.`
                     : `There is 1 Card in this Deck.`
                   }
-                </Text>
+              </Text>
 
 
 
@@ -72,8 +65,7 @@ class Deck extends Component {
             this.props.navigation.navigate(
             'AddCard',
             {
-              navTitle: this.props.title,
-              title:this.props.title,
+              deckId: deck.id,
             }
           );
         }
@@ -83,7 +75,7 @@ class Deck extends Component {
       </TouchableOpacity>
 
     <View>
-      {this.props.questions && this.props.questions.length>0
+      {this.props.cards && this.props.cards.length>0
         ? (
 
           <TouchableOpacity
@@ -92,8 +84,8 @@ class Deck extends Component {
                 this.props.navigation.navigate(
                 'Quiz',
                 {
-                navTitle: this.props.title,
-                questions: this.props.questions}
+                title: this.props.title,
+                cards: this.props.cards}
               );
             }
           } >
@@ -116,14 +108,11 @@ class Deck extends Component {
     )
   }
 }
-function mapStateToProps(state) {
-  return {
-    decks: state
-  }
-}
+const mapStateToProps = (state, { navigation }) => ({
+  deck: state[navigation.route.params("deckId")]
+});
 
-
-export default connect(mapStateToProps,{ deleteDeck, getDeckDetails})(Deck)
+export default connect(mapStateToProps,null)(Deck)
 
 const styles = StyleSheet.create({
    container: {
