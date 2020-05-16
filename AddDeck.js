@@ -32,7 +32,7 @@ class AddDeck extends Component {
   };
   _DeckObject = () => ({
       id: generateId(),
-      title: this.state.input,
+      title: this.state.titleText,
       cards: []
     })
 
@@ -52,6 +52,10 @@ class AddDeck extends Component {
 
          clearLocalNotification()
            .then(setLocalNotification)
+
+           this.setState(() => ({
+         titleText: ""
+       }));
      };
 
 

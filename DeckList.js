@@ -51,8 +51,8 @@ render() {
         />
       </View>
     ) : (
-      <View style={styles.blank}>
-        <Text style={{ fontSize: 18 }}>No decks yet. Add Deck.</Text>
+      <View>
+        <Text style={styles.text}>No decks yet. Add A Deck.</Text>
       </View>
     );
 

@@ -48,11 +48,12 @@ export function handleAddDecks(deckTitle){
   }
   }
 
-export function addEntry(deck) {
+export function addEntry(id,title) {
   console.log('addEntry action');
   return {
     type: 'ADD_ENTRY',
-    deck
+    id,
+    title,
   };
 }
 

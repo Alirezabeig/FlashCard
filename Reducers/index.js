@@ -13,12 +13,17 @@ export default function decks(state = {}, action) {
                 ...state,
                 ...action.decks
             }
-        case ADD_ENTRY:
-            const { deck } = action;
-            return {
-                ...state,
-                [deck.title]: deck,
+        case ADD_ENTRY: {
+          return {
+            ...state,
+            [action.id]: {
+              id: action.id,
+              title: action.title,
+              cards: []
             }
+          };
+        }
+
         case DECK_INFO:
             return action.payload;
         case ADD_CARD_TO_DECK:
