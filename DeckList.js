@@ -42,7 +42,7 @@ render() {
           data={Object.values(decks)}
           renderItem={({ item }) => (
             <SummaryDeck
-              id={item.id}
+              deckIdid={item.id}
               title={item.title}
               navigation={this.props.navigation}
             />

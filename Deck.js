@@ -15,6 +15,13 @@ import {Card} from 'react-native-paper'
 class Deck extends Component {
 
 
+  static navigationOptions = ({ route }) => ({
+      title: route.params.deck.title,
+
+
+
+    });
+
   deleteThisDeck() {
      const title = this.props.title;
     this.props.deleteDeck(title);
@@ -22,15 +29,11 @@ class Deck extends Component {
 
    }
 
-   static navigationOptions = ({ route }) => ({
-       title: route.params.title
-     });
-
      AddCard = ()=> {
      this.props.navigation.navigate(
        'AddCard',
        {
-        deckId:this.props.deck.id
+        deckId:deck.id
             }
      );
     }
@@ -39,6 +42,8 @@ class Deck extends Component {
   render (){
 
     const {navigation, deck}=this.props;
+    const { title, deckId } = this.props.route.params;
+
     return (
 
       <View  >
@@ -51,7 +56,7 @@ class Deck extends Component {
 
               <Text style={{marginBottom: 10, textAlign: 'center'}}>
                   {this.props.cards && (this.props.cards.length>1 || this.props.cards.length==0)
-                    ?`There are ${this.props.cards.length} Cards in ${this.props.title} Deck.`
+                    ?`There are ${this.props.cards.length} Cards in ${this.props.deck.title} Deck.`
                     : `There is 1 Card in this Deck.`
                   }
               </Text>
@@ -82,8 +87,8 @@ class Deck extends Component {
                 this.props.navigation.navigate(
                 'Quiz',
                 {
-                title: this.props.title,
-                cards: this.props.cards}
+                title: this.props.deck.title,
+                cards: this.props.deck.cards}
               );
             }
           } >
@@ -106,6 +111,7 @@ class Deck extends Component {
 const mapStateToProps = (state, { route }) => ({
   deck: state[route.params.deckId]
 });
+
 
 export default connect(mapStateToProps,null)(Deck)
 

@@ -23,12 +23,15 @@ export default function decks(state = initState, action) {
               [deck.title]: deck,
           }
         case ADD_CARD:
+          const {deckId, card} =action;
           return {
-          ...state,
-          [deck.card]:deck,
+            ...state,
+            [deckId]: {
+              ...state[deckId],
+              questions:
+              state[deckId].questions.concat([card])
+          }
         }
-
-
         default:
             return state;
     }

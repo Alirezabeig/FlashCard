@@ -1,6 +1,6 @@
 
 import {   AsyncStorage } from 'react-native';
-import {saveDeck, getDecks, saveDeckTitle} from '../utils/api'
+import {saveDeck, getDecks, saveDeckTitle, cardAddDeck} from '../utils/api'
 
 export const ADD_DECK = 'ADD_DECK';
 export const DECK_DB ='DECK_DB';
@@ -39,9 +39,11 @@ export function createDeck(deck) {
   };
 };
 
-export function createCard(card){
+export function createCard(title, card){
+  console.log('Card Create action');
   return{
     type:'ADD_CARD',
+    title,
     card,
     }
   }

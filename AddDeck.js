@@ -89,7 +89,6 @@ class AddDeck extends Component {
 
             </View>
            </TouchableWithoutFeedback>
-
         </SafeAreaView>
 
     </KeyboardAvoidingView>

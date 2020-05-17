@@ -78,7 +78,7 @@ class AddCard extends Component {
   }
 }
 const mapDispatchToProps = dispatch => ({
-  createCard : (deckId,question,answer) => dispatch(createCard(deckId,question,answer))
+  createCard : (deckId, card) => dispatch(createCard(deckId, question, answer))
 });
 
 function mapStateToProps(state,{route}) {
