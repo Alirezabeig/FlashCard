@@ -2,19 +2,23 @@ import React, { Component } from 'react';
 import {View,TouchableWithoutFeedback, Keyboard, Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView} from 'react-native'
 //import {} from './utils/helper'
 import {cardAddDeck} from './utils/api'
+import {connect} from 'react-redux'
+import {createCard} from './actions/index'
 
 
-export default class AddDeck extends Component {
+class AddCard extends Component {
 
       state= {
           questionInput:'',
           answerInput:'',
       }
 
-      submit=() => {
+      static navigationOptions = ({ route }) => ({
+          question: route.params.question,
+          answer:route.params.question,
+          });
 
-        deckId= this.props.navigation.getParam("deckID");
-        
+      submit=() => {
         if (this.state.questionInput && this.state.answerInput){
           const {questionInput,answerInput}=this.state;
           const title= this.props.route.params.title;
@@ -73,6 +77,17 @@ export default class AddDeck extends Component {
     )
   }
 }
+const mapDispatchToProps = dispatch => ({
+  createCard : (deckId,question,answer) => dispatch(createCard(deckId,question,answer))
+});
+
+function mapStateToProps(state,{route}) {
+  return {
+    deck: state[route.params.deckId]
+  }
+}
+
+export default connect (mapStateToProps,mapDispatchToProps)(AddCard)
 
 const styles = StyleSheet.create({
    container: {

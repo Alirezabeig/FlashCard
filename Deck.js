@@ -44,7 +44,6 @@ class Deck extends Component {
       <View  >
 
         <Card style={styles.card10}>
-
           <Text style={{marginBottom: 20, textAlign: 'center', fontSize:30}}>
           {deck.title}
 

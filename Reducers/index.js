@@ -1,6 +1,7 @@
 import {
   ADD_DECK,
   DECK_DB,
+  ADD_CARD,
 
 } from '../actions/index'
 
@@ -21,6 +22,12 @@ export default function decks(state = initState, action) {
               ...state,
               [deck.title]: deck,
           }
+        case ADD_CARD:
+          return {
+          ...state,
+          [deck.card]:deck,
+        }
+
 
         default:
             return state;
