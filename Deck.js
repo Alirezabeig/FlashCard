@@ -16,7 +16,7 @@ class Deck extends Component {
 
 
   static navigationOptions = ({ route }) => ({
-      title: route.params.deck.title,
+      title: route.params.title,
 
 
 
@@ -109,7 +109,10 @@ class Deck extends Component {
   }
 }
 const mapStateToProps = (state, { route }) => ({
-  deck: state[route.params.deckId]
+  deck: {
+    deckId: state[route.params.deckId],
+    title: state[route.params.title]
+  }
 });
 
 
