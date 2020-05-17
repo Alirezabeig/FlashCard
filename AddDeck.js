@@ -13,7 +13,7 @@ import {View,
 import {saveDeck, saveDeckTitle} from './utils/api'
 import {getDeckDetails} from './actions/index';
 import {connect} from 'react-redux';
-import {addEntry} from './actions/index';
+import {createDeck} from './actions/index';
 
 import {
   getDailyReminderValue,
@@ -45,11 +45,10 @@ class AddDeck extends Component {
 
   Submit = () => {
       deck = this._DeckObject();
-      this.props.addEntry(deck.id,deck.title);
+      this.props.createDeck(deck);
       saveDeck(deck);
        this.props.navigation.navigate("Home", {
-      deckId: deck.id,
-      name: deck.name
+
     });
 
          clearLocalNotification()
@@ -98,10 +97,15 @@ class AddDeck extends Component {
     )
   }
 }
+function mapStateToProps(state) {
+  return {
+    decks: state
+  }
+}
 const mapDispatchToProps = dispatch => ({
-  addEntry: (id, deckTitle) => dispatch(addEntry(id, deckTitle))
+  createDeck: (deck) => dispatch(createDeck(deck))
 });
-export default connect(null, mapDispatchToProps)(AddDeck);
+export default connect(mapStateToProps,mapDispatchToProps)(AddDeck);
 
 const styles = StyleSheet.create({
    container: {

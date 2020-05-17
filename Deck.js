@@ -23,14 +23,14 @@ class Deck extends Component {
    }
 
    static navigationOptions = ({ navigation }) => ({
-       title: this.props.navigation.getParam("title")
+       title: navigation.getParam("title")
      });
 
      AddCard = ()=> {
      this.props.navigation.navigate(
        'AddCard',
        {
-        deckId:deck.id
+        deckId:this.props.deck.id
             }
      );
     }
@@ -46,10 +46,8 @@ class Deck extends Component {
         <Card style={styles.card10}>
 
           <Text style={{marginBottom: 20, textAlign: 'center', fontSize:30}}>
-          {deck.title
-            ?`# ${deck.title} `
-            : `..`
-          }
+          {deck.title}
+
           </Text>
 
               <Text style={{marginBottom: 10, textAlign: 'center'}}>
