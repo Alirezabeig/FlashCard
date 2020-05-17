@@ -47,8 +47,10 @@ class AddDeck extends Component {
       deck = this._DeckObject();
       this.props.addEntry(deck.id,deck.title);
       saveDeck(deck);
-       this.props.navigation.navigate('Home');
-
+       this.props.navigation.navigate("Home", {
+      deckId: deck.id,
+      name: deck.name
+    });
 
          clearLocalNotification()
            .then(setLocalNotification)

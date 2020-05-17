@@ -28,7 +28,7 @@ render() {
   <TouchableOpacity
     style={styles.card10}
     onPress={() =>
-      navigation.navigate("Deck", { deckId: deck.id, title: deck.title })
+      navigation.navigate("Deck", { deckId: id, title: title  })
     }
   >
     <Text style={styles.cardName}>{title}</Text>

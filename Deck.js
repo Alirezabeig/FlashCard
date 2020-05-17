@@ -23,7 +23,7 @@ class Deck extends Component {
    }
 
    static navigationOptions = ({ navigation }) => ({
-       title: this.props.route.params.title,
+       title: navigation.getParam("title")
      });
 
      AddCard = ()=> {
@@ -79,7 +79,6 @@ class Deck extends Component {
     <View>
       {this.props.cards && this.props.cards.length>0
         ? (
-
           <TouchableOpacity
               style={styles.submitButton2}
               onPress={()=>{
@@ -96,22 +95,19 @@ class Deck extends Component {
           ): <Text style={styles.tt}>Add Cards so you can quize yourself.</Text>
           }
       </View>
-
         <Button
           title="Delete Deck"
           type="clear"
           onPress={() => this.deleteThisDeck()}
         />
-
         </Card>
-
       </View>
 
     )
   }
 }
 const mapStateToProps = (state, { navigation }) => ({
-  deck: state[navigation.route.params("deckId")]
+  deck: state[navigation.getParams("deckId")]
 });
 
 export default connect(mapStateToProps,null)(Deck)
