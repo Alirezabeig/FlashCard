@@ -22,8 +22,8 @@ class Deck extends Component {
 
    }
 
-   static navigationOptions = ({ navigation }) => ({
-       title: navigation.getParam("title")
+   static navigationOptions = ({ route }) => ({
+       title: route.params.title
      });
 
      AddCard = ()=> {
@@ -104,8 +104,8 @@ class Deck extends Component {
     )
   }
 }
-const mapStateToProps = (state, { navigation }) => ({
-  deck: state[navigation.getParam("deckId")]
+const mapStateToProps = (state, { route }) => ({
+  deck: state[route.params.deckId]
 });
 
 export default connect(mapStateToProps,null)(Deck)
