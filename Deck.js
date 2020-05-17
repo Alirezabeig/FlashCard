@@ -22,7 +22,9 @@ class Deck extends Component {
 
    }
 
-
+   static navigationOptions = ({ navigation }) => ({
+       title: this.props.route.params.title,
+     });
 
      AddCard = ()=> {
      this.props.navigation.navigate(

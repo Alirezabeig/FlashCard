@@ -46,7 +46,7 @@ export const saveDeck = deck => {
 };
 
 export const saveCard = (deckId, card) => {
-  return AsyncStorage.mergeItem(STORAGE_KEY).then(results => {
+  return AsyncStorage.getItem(STORAGE_KEY).then(results => {
     const data = JSON.parse(results);
 
     // Add card to existing deck data.
