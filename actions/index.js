@@ -39,11 +39,11 @@ export function createDeck(deck) {
   };
 };
 
-export function createCard(title, card){
+export function createCard(deckId, card){
   console.log('Card Create action');
   return{
     type:'ADD_CARD',
-    title,
+    deckId,
     card,
     }
   }

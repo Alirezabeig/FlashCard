@@ -29,7 +29,7 @@ class AddCard extends Component {
             answer: answerInput
           };
 
-          cardAddDeck(deckId, card);
+          //cardAddDeck(deckId, card);
           //Add this card to Util/API
 
           this.props.createCard(deckId, card);
@@ -40,7 +40,7 @@ class AddCard extends Component {
             answerInput:'',
           });
 
-          this.props.navigation.navigate('Deck')
+          this.props.navigation.goBack()
         }
       }
 
@@ -80,6 +80,10 @@ class AddCard extends Component {
     )
   }
 }
+
+const mapStateToProps = (state, { route }) => ({
+  deck: state[route.params.deckId]
+});
 const mapDispatchToProps = dispatch => ({
   createCard : (deckId, card) => dispatch(createCard(deckId, card))
 });
