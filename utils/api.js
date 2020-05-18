@@ -67,7 +67,6 @@ export function saveDeckTitle(title) {
   try {
     return AsyncStorage.setItem(title, JSON.stringify ({title,questions:[]}));
     } catch (error){
-
   console.log(error)
   }
 }

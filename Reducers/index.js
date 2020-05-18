@@ -2,7 +2,7 @@ import {
   ADD_DECK,
   DECK_DB,
   ADD_CARD,
-
+  DELETE_DECK,
 } from '../actions/index'
 
 const initState = {
@@ -30,8 +30,12 @@ export default function decks(state = initState, action) {
             [deckId]: {
             ...state[deckId],
             questions: state[deckId].questions.concat([card])
+          }
         }
-    }
+
+        case DELETE_DECK:
+          return action.payload;
+
         default:
             return state;
     }

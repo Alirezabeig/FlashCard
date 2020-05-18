@@ -33,7 +33,7 @@ class AddDeck extends Component {
   _DeckObject = () => ({
       id: generateId(),
       title: this.state.titleText,
-      cards: []
+      questions: []
     })
 
 

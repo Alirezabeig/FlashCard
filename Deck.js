@@ -113,7 +113,7 @@ const mapStateToProps = (state, { route }) => ({
 });
 
 
-export default connect(mapStateToProps,null)(Deck)
+export default connect(mapStateToProps,{deleteDeck})(Deck)
 
 const styles = StyleSheet.create({
    container: {
