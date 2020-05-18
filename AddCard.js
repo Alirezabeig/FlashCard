@@ -98,8 +98,8 @@ const styles = StyleSheet.create({
      height: 40,
      fontSize: 20,
      marginTop: 150,
-
    },
+   
    cardName : {
      margin: 15,
      marginLeft: 30,
@@ -120,7 +120,6 @@ const styles = StyleSheet.create({
 
    },
    submitButton: {
-
       backgroundColor: '#000000',
       padding: 15,
       margin: 25,
