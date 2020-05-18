@@ -6,7 +6,7 @@ import {
 } from '../actions/index'
 
 const initState = {
-    decks: []
+    decks: {}
 }
 export default function decks(state = initState, action) {
     switch (action.type) {

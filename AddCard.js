@@ -13,24 +13,27 @@ class AddCard extends Component {
           answerInput:'',
       }
 
-      static navigationOptions = ({ route }) => ({
-          question: route.params.question,
-          answer:route.params.question,
-          });
+
 
       submit=() => {
+
+         deckId = this.props.route.deckId;
+
         if (this.state.questionInput && this.state.answerInput){
           const {questionInput,answerInput}=this.state;
           const title= this.props.route.params.title;
 
-          const cardInfo = {
+
+          const card = {
             question: questionInput,
             answer: answerInput
           };
 
-          cardAddDeck(title, cardInfo);
-          //Add this card to the  - Connect to Util/API
+          cardAddDeck(deckId, card);
+          //Add this card to Util/API
 
+          this.props.createCard(deckId, card);
+          //Add this to redux store
 
           this.setState({
             questionInput:'',
@@ -78,16 +81,10 @@ class AddCard extends Component {
   }
 }
 const mapDispatchToProps = dispatch => ({
-  createCard : (deckId, question, answer) => dispatch(createCard(deckId, question, answer))
+  createCard : (deckId, card) => dispatch(createCard(deckId, card))
 });
 
-function mapStateToProps(state,{route}) {
-  return {
-    deck: state[route.params.deckId]
-  }
-}
-
-export default connect (mapStateToProps,mapDispatchToProps)(AddCard)
+export default connect (null,mapDispatchToProps)(AddCard)
 
 const styles = StyleSheet.create({
    container: {
