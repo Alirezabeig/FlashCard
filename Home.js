@@ -8,7 +8,7 @@ export default class Home extends Component {
     return (
       <View style={styles.container}>
         <DeckList {...this.props} />
-        
+
       </View>
     );
   }
@@ -16,7 +16,7 @@ export default class Home extends Component {
 
 const styles = StyleSheet.create({
   container: {
-     paddingTop: 23
+     paddingTop: 1,
   },
   text : {
     margin: 10,

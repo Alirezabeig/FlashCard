@@ -37,7 +37,7 @@ class AddCard extends Component {
           });
 
 
-              this.props.navigation.goBack();
+              this.props.navigation.navigate("Deck", { deckId: id, name:name  })
 
       }
 

@@ -25,15 +25,15 @@ class DeckList extends Component {
 render() {
   const { decks, navigation } = this.props;
 
-  const DeckSummaryCard = ({ id, name, cardCount, navigation }) => (
+  const SummaryCard = ({ id, name, cardCount, navigation }) => (
   <TouchableOpacity
-    style={styles.container}
+    style={styles.card10}
     onPress={() =>
       navigation.navigate("Deck", { deckId: id, name: name })
     }
   >
-    <Text style={styles.name}>{name}</Text>
-    <Text style={styles.count}>{`${cardCount} ${pluralize(
+    <Text style={styles.text}>{name}</Text>
+    <Text style={styles.text2}>{`${cardCount} ${pluralize(
       "Card",
       cardCount
     )}`}</Text>
@@ -45,7 +45,7 @@ return Object.values(decks).length > 0 ? (
         <FlatList
           data={Object.values(decks)}
           renderItem={({ item }) => (
-            <DeckSummaryCard
+            <SummaryCard
               id={item.id}
               name={item.name}
               cardCount={item.cards.length}
@@ -79,16 +79,10 @@ export default connect(
 
 const styles = StyleSheet.create({
    container: {
-      paddingTop: 0,
-   },
-   text : {
-     margin: 10,
-     marginLeft: 30,
-     height: 40,
-     fontSize: 20,
-     marginTop: 150,
 
+      backgroundColor: '#f0f8ff',
    },
+
    card: {
      padding: 10,
      margin: 2,
@@ -102,8 +96,8 @@ const styles = StyleSheet.create({
    },
    card10: {
      margin: 10,
-     height: 80,
-     backgroundColor: '#f0f8ff',
+     height: 100,
+     backgroundColor: '#ffffff',
      borderRadius: 5,
      padding: 20,
      shadowColor: 'rgba(0,0,0,0.5)',
@@ -149,15 +143,17 @@ const styles = StyleSheet.create({
       justifyContent : "center",
    },
 
-   tt:{
-     fontSize: 30,
+   text:{
+     fontSize: 25,
      margin:10,
 
    },
 
-   tt2:{
-     fontSize: 15,
-     margin:10,
+   text2:{
+     fontSize: 12,
+     margin:0,
+     marginLeft: 200,
+     marginBottom: 10,
 
    },
 });

@@ -19,7 +19,8 @@ import {
   getDailyReminderValue,
   clearLocalNotification,
   setLocalNotification
-} from './utils/helpers'
+} from './utils/helpers';
+
 const Tab = createBottomTabNavigator();
 function Tabs (){
   return (

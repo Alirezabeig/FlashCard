@@ -7,11 +7,13 @@ import {
 const decks = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_DECKS:
+          console.log("All DECKS- Reducer")
       return {
         ...state,
         ...action.decks
       };
     case CREATE_DECK: {
+      console.log("DECK ADD- Reducer")
       return {
         ...state,
         [action.id]: {
@@ -22,6 +24,7 @@ const decks = (state = initialState, action) => {
       };
     }
     case CREATE_CARD: {
+      console.log("CARDS ADD- Reducer")
       return {
         ...state,
         [action.deckId]: {
