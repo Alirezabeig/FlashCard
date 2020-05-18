@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList} from 'react-native'
-import {handleGetAllDecks} from './actions/index';
+import {receiveDecks} from './actions/index';
 import {Card} from 'react-native-paper';
 import { retrieveDecks } from "./utils/api";
 
@@ -14,7 +14,7 @@ class DeckList extends Component {
 
   componentDidMount(){
     retrieveDecks()
-     .then(decks => this.props.handleGetAllDecks(decks))
+     .then(decks => this.props.receiveDecks(decks))
      .then(() => {
        this.setState({ ready: true });
      });

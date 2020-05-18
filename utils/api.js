@@ -26,14 +26,6 @@ export function getDecks() {
   });
 }
 
-export const retrieveDecks = () => {
-  return AsyncStorage.getItem(STORAGE_KEY).then(results => {
-    const data = JSON.parse(results);
-    return data;
-  });
-};
-
-
 export function getDeck(id) {
   return AsyncStorage.getItem(id);
 }
@@ -88,3 +80,11 @@ export function cardAddDeck(title, card){
   }
   return "You got your card added!"
 }
+
+//Used in DeckList
+export const retrieveDecks = () => {
+  return AsyncStorage.getItem(STORAGE_KEY).then(results => {
+    const data = JSON.parse(results);
+    return data;
+  });
+};

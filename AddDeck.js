@@ -12,6 +12,7 @@ import {View,
 //import {} from './utils/helper'
 import {connect} from 'react-redux';
 import {createDeck} from './actions/index';
+import {saveDeck} from './utils/api'
 
 import {
   getDailyReminderValue,
@@ -44,7 +45,7 @@ class AddDeck extends Component {
   Submit = () => {
       deck = this._DeckObject();
       this.props.createDeck(deck.id, deck.name);
-
+      saveDeck(deck);
        this.props.navigation.navigate("Home", { deck
     });
 
