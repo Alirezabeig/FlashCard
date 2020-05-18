@@ -40,7 +40,7 @@ class AddCard extends Component {
             answerInput:'',
           });
 
-          this.props.navigation.navigate("Deck", { deckId: id, title: title  })
+          this.props.navigation.navigate("Deck", { deckId: id, title: title, card: card })
         }
       }
 
