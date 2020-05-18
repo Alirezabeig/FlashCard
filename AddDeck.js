@@ -10,8 +10,6 @@ import {View,
   TouchableOpacity,
   KeyboardAvoidingView} from 'react-native'
 //import {} from './utils/helper'
-import {saveDeck, saveDeckTitle} from './utils/api'
-import {getDeckDetails} from './actions/index';
 import {connect} from 'react-redux';
 import {createDeck} from './actions/index';
 
@@ -32,8 +30,8 @@ class AddDeck extends Component {
   };
   _DeckObject = () => ({
       id: generateId(),
-      title: this.state.titleText,
-      questions: []
+      name: this.state.titleText,
+      cards: []
     })
 
 
@@ -45,10 +43,9 @@ class AddDeck extends Component {
 
   Submit = () => {
       deck = this._DeckObject();
-      this.props.createDeck(deck);
-      saveDeck(deck);
-       this.props.navigation.navigate("Home", { deck
+      this.props.createDeck(deck.id, deck.name);
 
+       this.props.navigation.navigate("Home", { deck
     });
 
          clearLocalNotification()
@@ -96,15 +93,11 @@ class AddDeck extends Component {
     )
   }
 }
-function mapStateToProps(state) {
-  return {
-    decks: state
-  }
-}
+
 const mapDispatchToProps = dispatch => ({
-  createDeck: (deck) => dispatch(createDeck(deck))
+  createDeck: (id, deckTitle) => dispatch(createDeck(id, deckTitle))
 });
-export default connect(mapStateToProps,mapDispatchToProps)(AddDeck);
+export default connect(null,mapDispatchToProps)(AddDeck);
 
 const styles = StyleSheet.create({
    container: {
