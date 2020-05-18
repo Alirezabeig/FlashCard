@@ -1,20 +1,25 @@
 
 import keyMirror from "keymirror";
 
-export const ActionTypes = keyMirror({
-  RECEIVE_DECKS: null,
-  CREATE_DECK: null,
-  CREATE_CARD: null
-});
+export const RECEIVE_DECKS='RECEIVE_DECKS';
+export const CREATE_DECK= 'CREATE_DECK';
+export const CREATE_CARD= 'CREATE_CARD';
 
 export const createDeck = (id, name) => ({
-  type: ActionTypes.CREATE_DECK,
+  type: 'CREATE_DECK',
   id,
   name
 });
 
 export const receiveDecks = decks => ({
-  
-  type: ActionTypes.RECEIVE_DECKS,
+
+  type: 'RECEIVE_DECKS',
   decks
 });
+
+export const createCard = (id, question, answer) => ({
+  type: 'CREATE_CARD',
+  id,
+  question,
+  answer
+})

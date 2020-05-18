@@ -8,6 +8,9 @@ import {createCard} from './actions/index'
 
 class AddCard extends Component {
 
+  static navigationOptions = () => ({
+    title: "Add Card"
+  });
       state= {
           questionInput:'',
           answerInput:'',
@@ -19,15 +22,8 @@ class AddCard extends Component {
 
          deckId = this.props.route.deckId;
 
-        if (this.state.questionInput && this.state.answerInput){
           const {questionInput,answerInput}=this.state;
-          const title= this.props.route.params.title;
 
-
-          const card = {
-            question: questionInput,
-            answer: answerInput
-          };
 
           //cardAddDeck(deckId, card);
           //Add this card to Util/API
@@ -42,20 +38,19 @@ class AddCard extends Component {
 
 
               this.props.navigation.goBack();
-        }
+
       }
 
   render (){
     const {questionInput, answerInput} = this.state;
 
     return (
-
       <View style={styles.container}>
           <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={styles.container}>
 
             <View>
                   <Text style= {styles.cardName}>
-                  Add a New Card... !
+                  Add a New Question Card... !
                   </Text>
 
                   <TextInput

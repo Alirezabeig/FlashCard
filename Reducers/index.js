@@ -1,18 +1,17 @@
-import { ActionTypes } from "../actions";
+import {
+  RECEIVE_DECKS,
+  CREATE_CARD,
+  CREATE_DECK} from "../actions";
 
-const initialState = null;
 
 const decks = (state = initialState, action) => {
   switch (action.type) {
-
-    case ActionTypes.RECEIVE_DECKS:
-    console.log("all Decks - Reducer")
+    case RECEIVE_DECKS:
       return {
         ...state,
         ...action.decks
       };
-    case ActionTypes.CREATE_DECK: {
-      console.log("Deck Add - Reducer")
+    case CREATE_DECK: {
       return {
         ...state,
         [action.id]: {
@@ -22,7 +21,18 @@ const decks = (state = initialState, action) => {
         }
       };
     }
-
+    case CREATE_CARD: {
+      return {
+        ...state,
+        [action.deckId]: {
+          ...state[action.deckId],
+          cards: [
+            ...state[action.deckId].cards,
+            { question: action.question, answer: action.answer }
+          ]
+        }
+      };
+    }
     default:
       return state;
   }
