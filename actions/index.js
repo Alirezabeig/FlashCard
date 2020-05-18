@@ -2,7 +2,7 @@
 import {   AsyncStorage } from 'react-native';
 import keyMirror from "keyMirror"
 
-export const actionTypes = keyMirros ({
+export const ActionTypes = keyMirros ({
   RECEIVE_DECKS:null,
   CREATE_DECK:null,
 })

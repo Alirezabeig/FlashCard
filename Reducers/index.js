@@ -5,38 +5,27 @@ import {
   DELETE_DECK,
 } from '../actions/index'
 
-const initState = {
-    decks: {}
-}
-export default function decks(state = initState, action) {
-    switch (action.type) {
-        case DECK_DB:
-            return {
-                ...state,
-                ...action.decks
-            }
-        case ADD_DECK:
-        console.log('reducer createDeck');
-          const {deck}= action;
-          return {
-              ...state,
-              [deck.title]: deck,
-          }
-        case ADD_CARD:
+import {ActionTypes} from "../actions"
 
-        const { deckId, card } = action;
-        return {
-          ...state,
-            [deckId]: {
-            ...state[deckId],
-            questions: state[deckId].questions.concat([card])
-          }
+const decks (state ={}, action) => {
+  switch(action.type) {
+    case ActionTypes.RECEIVE_DECKS:
+      return {
+        ...state,
+        ...action.decks
+      }
+    case ActionTypes.CREATE_DECK:{
+      return {
+        [action.id]:{
+          id:action.id,
+          name:action.name,
+          cards:[]
         }
-
-        case DELETE_DECK:
-          return action.payload;
-
-        default:
-            return state;
+      };
     }
+
+    default:
+    ...state,
+
+  }
 }
