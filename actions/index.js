@@ -1,19 +1,20 @@
 
-import {   AsyncStorage } from 'react-native';
-import keyMirror from "keyMirror"
+import keyMirror from "keymirror";
 
-export const ActionTypes = keyMirros ({
-  RECEIVE_DECKS:null,
-  CREATE_DECK:null,
-})
+export const ActionTypes = keyMirror({
+  RECEIVE_DECKS: null,
+  CREATE_DECK: null,
+  CREATE_CARD: null
+});
 
-export const receiveDecks = decks => {
-  type: ActionTypes.RECEIVE_DECKS,
-  decks
-}
-
-export const createDeck = (id, name)=> ({
+export const createDeck = (id, name) => ({
   type: ActionTypes.CREATE_DECK,
   id,
   name
-})
+});
+
+export const receiveDecks = decks => ({
+  
+  type: ActionTypes.RECEIVE_DECKS,
+  decks
+});

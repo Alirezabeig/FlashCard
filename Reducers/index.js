@@ -1,31 +1,31 @@
-import {
-  ADD_DECK,
-  DECK_DB,
-  ADD_CARD,
-  DELETE_DECK,
-} from '../actions/index'
+import { ActionTypes } from "../actions";
 
-import {ActionTypes} from "../actions"
+const initialState = null;
 
-const decks (state ={}, action) => {
-  switch(action.type) {
+const decks = (state = initialState, action) => {
+  switch (action.type) {
+
     case ActionTypes.RECEIVE_DECKS:
+    console.log("all Decks - Reducer")
       return {
         ...state,
         ...action.decks
-      }
-    case ActionTypes.CREATE_DECK:{
+      };
+    case ActionTypes.CREATE_DECK: {
+      console.log("Deck Add - Reducer")
       return {
-        [action.id]:{
-          id:action.id,
-          name:action.name,
-          cards:[]
+        ...state,
+        [action.id]: {
+          id: action.id,
+          name: action.name,
+          cards: []
         }
       };
     }
 
     default:
-    ...state,
-
+      return state;
   }
-}
+};
+
+export default decks;

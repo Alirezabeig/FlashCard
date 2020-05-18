@@ -4,6 +4,7 @@ import {View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList} from 'rea
 import {receiveDecks} from './actions/index';
 import {Card} from 'react-native-paper';
 import { retrieveDecks } from "./utils/api";
+import pluralize from "pluralize";
 
 
 class DeckList extends Component {
@@ -12,64 +13,69 @@ class DeckList extends Component {
       ready: false
     };
 
-  componentDidMount(){
-    retrieveDecks()
-     .then(decks => this.props.receiveDecks(decks))
-     .then(() => {
-       this.setState({ ready: true });
-     });
-  }
+    componentDidMount() {
+      retrieveDecks()
+        .then(decks => this.props.receiveDecks(decks))
+        .then(() => {
+          this.setState({ ready: true });
+        });
+    }
 
 
 render() {
   const { decks, navigation } = this.props;
 
-  const SummaryDeck = ({ id, title, navigation }) => (
+  const DeckSummaryCard = ({ id, name, cardCount, navigation }) => (
   <TouchableOpacity
-    style={styles.card10}
+    style={styles.container}
     onPress={() =>
-      navigation.navigate("Deck", { deckId: id, title: title  })
+      navigation.navigate("Deck", { deckId: id, name: name })
     }
   >
-    <Text style={styles.cardName}>{title}</Text>
+    <Text style={styles.name}>{name}</Text>
+    <Text style={styles.count}>{`${cardCount} ${pluralize(
+      "Card",
+      cardCount
+    )}`}</Text>
   </TouchableOpacity>
 );
 
-
-    return Object.values(decks).length > 0 ? (
+return Object.values(decks).length > 0 ? (
       <View style={styles.container}>
         <FlatList
           data={Object.values(decks)}
           renderItem={({ item }) => (
-            <SummaryDeck
-              deckId={item.id}
-              title={item.title}
+            <DeckSummaryCard
+              id={item.id}
+              name={item.name}
+              cardCount={item.cards.length}
               navigation={this.props.navigation}
             />
           )}
-          keyExtractor={(item, index) => item.title}
+          keyExtractor={(item, index) => item.name}
         />
       </View>
     ) : (
-      <View>
-        <Text style={styles.text}>No decks yet. Add A Deck.</Text>
+      <View style={styles.blank}>
+        <Text style={{ fontSize: 18 }}>You don't have any decks yet.</Text>
       </View>
     );
-
-}
-}
-
-
-function mapStateToProps(state) {
-  return {
-    decks: state,
   }
 }
-const mapDispatchToProps = dispatch =>({
-  handleGetAllDecks:decks => dispatch(handleGetAllDecks(decks))
-})
 
-export default connect(mapStateToProps, mapDispatchToProps)(DeckList);
+
+const mapStateToProps = decks => ({
+  decks
+});
+
+const mapDispatchToProps = dispatch => ({
+  receiveDecks: decks => dispatch(receiveDecks(decks))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DeckList);
 
 const styles = StyleSheet.create({
    container: {

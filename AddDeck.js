@@ -46,8 +46,11 @@ class AddDeck extends Component {
       deck = this._DeckObject();
       this.props.createDeck(deck.id, deck.name);
       saveDeck(deck);
-       this.props.navigation.navigate("Home", { deck
-    });
+       this.props.navigation.navigate("Home",{
+       deckId: deck.id,
+      name: deck.name
+    }
+     );
 
          clearLocalNotification()
            .then(setLocalNotification)
@@ -94,11 +97,14 @@ class AddDeck extends Component {
     )
   }
 }
-
 const mapDispatchToProps = dispatch => ({
-  createDeck: (id, deckTitle) => dispatch(createDeck(id, deckTitle))
+  createDeck: (id, deckName) => dispatch(createDeck(id, deckName))
 });
-export default connect(null,mapDispatchToProps)(AddDeck);
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(AddDeck);
 
 const styles = StyleSheet.create({
    container: {

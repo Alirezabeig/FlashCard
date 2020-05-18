@@ -16,15 +16,15 @@ class Deck extends Component {
 
 
   static navigationOptions = ({ route }) => ({
-      title: route.params.deck.title,
+      name: route.params.name,
 
 
 
     });
 
   deleteThisDeck() {
-     const title = this.props.title;
-    this.props.deleteDeck(title);
+     const name = this.props.name;
+
      this.props.navigation.navigate('Home')
 
    }
@@ -42,7 +42,6 @@ class Deck extends Component {
   render (){
 
     const {navigation, deck}=this.props;
-    const { title, deckId } = this.props.route.params;
 
     return (
 
@@ -50,13 +49,13 @@ class Deck extends Component {
 
         <Card style={styles.card10}>
           <Text style={{marginBottom: 20, textAlign: 'center', fontSize:30}}>
-          {deck.title}
+          {deck.name}
 
           </Text>
 
               <Text style={{marginBottom: 10, textAlign: 'center'}}>
-                  {this.props.cards && (this.props.cards.length>1 || this.props.cards.length==0)
-                    ?`There are ${this.props.cards.length} Cards in ${this.props.deck.title} Deck.`
+                  {this.props.deck.cards && (this.props.deck.cards.length>1 || this.props.deck.cards.length==0)
+                    ?`There are ${this.props.deck.cards.length} Cards in ${this.props.deck.name} Deck.`
                     : `There is 1 Card in this Deck.`
                   }
               </Text>
@@ -86,9 +85,7 @@ class Deck extends Component {
               onPress={()=>{
                 this.props.navigation.navigate(
                 'Quiz',
-                {
-                title: this.props.deck.title,
-                cards: this.props.deck.cards}
+                {deck}
               );
             }
           } >
@@ -98,7 +95,7 @@ class Deck extends Component {
           }
       </View>
         <Button
-          title="Delete Deck"
+          name="Delete Deck"
           type="clear"
           onPress={() => this.deleteThisDeck()}
         />
@@ -109,7 +106,7 @@ class Deck extends Component {
   }
 }
 const mapStateToProps = (state, { route }) => ({
-  deck: state[route.params.title]
+  deck: state[route.params.deckId]
 });
 
 

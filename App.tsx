@@ -20,7 +20,6 @@ import {
   clearLocalNotification,
   setLocalNotification
 } from './utils/helpers'
-
 const Tab = createBottomTabNavigator();
 function Tabs (){
   return (

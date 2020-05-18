@@ -32,7 +32,7 @@ class AddCard extends Component {
           //cardAddDeck(deckId, card);
           //Add this card to Util/API
 
-          this.props.createCard(deckId, card);
+          this.props.createCard(deckId, questionInput, answerInput);
           //Add this to redux store
 
           this.setState({
@@ -40,12 +40,16 @@ class AddCard extends Component {
             answerInput:'',
           });
 
-          this.props.navigation.navigate("Deck", { deckId: id, title: title, card: card })
+
+              this.props.navigation.goBack();
         }
       }
 
   render (){
+    const {questionInput, answerInput} = this.state;
+
     return (
+
       <View style={styles.container}>
           <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={styles.container}>
 
@@ -58,14 +62,14 @@ class AddCard extends Component {
                       style={styles.input}
                       placeholder="  Enter your question: "
                       onChangeText={questionInput => this.setState({questionInput})}
-                      value={this.state.questionInput}
+                      value={questionInput}
                     />
 
                  <TextInput
                     style={styles.input}
                     placeholder="  Enter the answer "
                     onChangeText={answerInput=> this.setState({answerInput})}
-                    value= {this.state.answerInput}
+                    value= {answerInput}
                   />
 
                <TouchableOpacity
@@ -77,15 +81,13 @@ class AddCard extends Component {
               </View>
         </TouchableWithoutFeedback>
       </View>
-    )
+    );
   }
 }
 
-const mapStateToProps = (state, { route }) => ({
-  deck: state[route.params.deckId]
-});
 const mapDispatchToProps = dispatch => ({
-  createCard : (deckId, card) => dispatch(createCard(deckId, card))
+  createCard: (deckId, question, answer) =>
+    dispatch(createCard(deckId, question, answer))
 });
 
 export default connect (null,mapDispatchToProps)(AddCard)
