@@ -54,17 +54,18 @@ class Quiz extends Component {
       }
     });
     //this.resetNotification()
-  }
-  _Deck = () => {
-    console.log("\n\n deck => ", deck);
+  };
+  Deck = () => {
     return this.props.navigation.params("deck");
-
-  }
+  };
 
   shuffleCards() {
-    const cards = this.props.navigation.route.params.cards;
+    const deck = this.Deck();
+    console.log("\n\n deck in Quiz  -cardView => ", deck);
+
+    const cards = this.props.deck.cards;
     console.log("\n\n cards => ", cards);
-    this._getDeck();
+
     let i = deck.cards.length-1;
 
     do {
@@ -76,7 +77,7 @@ class Quiz extends Component {
     } while (i >= 0);
 
     return cards;
-  }
+  };
 
 renderCard() {
     const {

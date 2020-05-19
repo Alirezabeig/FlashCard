@@ -64,3 +64,18 @@ export const retrieveDecks = () => {
     return data;
   });
 };
+
+export const addCardToDeckk = (deckId, card) => {
+  return AsyncStorage.getItem(STORAGE_KEY).then(results => {
+    const data = JSON.parse(results);
+
+    data[deckId] = {
+      ...data[deckId],
+      cards: [
+        ...data[deckId].cards,
+        { question: card.question, answer: card.answer }
+      ]
+    };
+    AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  });
+};
