@@ -9,7 +9,7 @@ import {createCard} from './actions/index'
 class AddCard extends Component {
 
   static navigationOptions = () => ({
-    title: "Add Card"
+    title: "Add Card",
   });
       state= {
           questionInput:'',
@@ -20,8 +20,7 @@ class AddCard extends Component {
 
       submit=() => {
 
-         deckId = this.props.navigation.getParam("deckId");
-
+         deckId = this.props.route.deckId;
           const {questionInput,answerInput}=this.state;
 
 
@@ -85,7 +84,11 @@ const mapDispatchToProps = dispatch => ({
     dispatch(createCard(deckId, question, answer))
 });
 
-export default connect (null,mapDispatchToProps)(AddCard)
+const mapStateToProps = (state,{route}) => ({
+  deck: state[route.params.deckId]
+})
+
+export default connect (mapStateToProps,mapDispatchToProps)(AddCard)
 
 const styles = StyleSheet.create({
    container: {

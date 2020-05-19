@@ -17,9 +17,7 @@ class Deck extends Component {
 
   static navigationOptions = ({ route }) => ({
       name: route.params.name,
-
-
-
+      
     });
 
   deleteThisDeck() {
