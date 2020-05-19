@@ -63,7 +63,7 @@ class Quiz extends Component {
     const deck = this.props.route.params.deck;
     console.log("\n\n deck in Quiz  -cardView => ", deck);
 
-    const cards = this.props.deck.cards;
+    const cards = deck.cards;
     console.log("\n\n cards => ", cards);
 
     let i = deck.cards.length-1;
