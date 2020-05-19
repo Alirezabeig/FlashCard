@@ -56,13 +56,15 @@ class Quiz extends Component {
     //this.resetNotification()
   }
   _Deck = () => {
-    return this.props.navigation.params("deck");
     console.log("\n\n deck => ", deck);
+    return this.props.navigation.params("deck");
+
   }
 
   shuffleCards() {
     const cards = this.props.navigation.route.params.cards;
     console.log("\n\n cards => ", cards);
+    this._getDeck();
     let i = deck.cards.length-1;
 
     do {

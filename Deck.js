@@ -39,6 +39,8 @@ class Deck extends Component {
 
     const {navigation, deck}=this.props;
 
+      console.log("\n\n deck from Deck Details: => ", deck);
+
     return (
 
       <View  >
@@ -81,7 +83,7 @@ class Deck extends Component {
               onPress={()=>{
                 this.props.navigation.navigate(
                 'Quiz',
-                {cards: this.props.cards}
+                {deck}
               );
             }
           } >
