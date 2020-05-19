@@ -1,7 +1,8 @@
 import {
   RECEIVE_DECKS,
   CREATE_CARD,
-  CREATE_DECK} from "../actions";
+  CREATE_DECK,
+  DELETE_DECK} from "../actions";
 
 
 const decks = (state = initialState, action) => {
@@ -13,7 +14,8 @@ const decks = (state = initialState, action) => {
         ...state,
         ...action.decks
       };
-    case CREATE_DECK: {
+
+      case CREATE_DECK: {
       console.log("DECK ADD- Reducer")
       return {
         ...state,
@@ -25,6 +27,8 @@ const decks = (state = initialState, action) => {
       };
     }
     case CREATE_CARD: {
+      console.log("\nreducer Card state =>", state);
+
       console.log("CARDS ADD- Reducer")
       return {
         ...state,

@@ -17,12 +17,10 @@ class Deck extends Component {
 
   static navigationOptions = ({ route }) => ({
       name: route.params.name,
-      
     });
 
   deleteThisDeck() {
      const name = this.props.name;
-
      this.props.navigation.navigate('Home')
 
    }
@@ -94,7 +92,7 @@ class Deck extends Component {
       </View>
         <Button
           name="Delete Deck"
-          type="clear"
+          type="outline"
           onPress={() => this.deleteThisDeck()}
         />
         </Card>

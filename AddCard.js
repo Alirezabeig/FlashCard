@@ -20,12 +20,13 @@ class AddCard extends Component {
 
       submit=() => {
 
-         deckId = this.props.route.deckId;
+         deckId = this.route.params.deckId;
           const {questionInput,answerInput}=this.state;
 
 
           //cardAddDeck(deckId, card);
           //Add this card to Util/API
+          console.log("\n\n  questionInput, answerInput => ", deckId, questionInput, answerInput);
 
           this.props.createCard(deckId, questionInput, answerInput);
           //Add this to redux store
@@ -84,9 +85,15 @@ const mapDispatchToProps = dispatch => ({
     dispatch(createCard(deckId, question, answer))
 });
 
-const mapStateToProps = (state,{route}) => ({
-  deck: state[route.params.deckId]
-})
+const mapStateToProps = (state, props) => {
+  console.log("\nmapStateToProps 1 state => ", state);
+  console.log("\nmapStateToProps 2 props => ", props);
+  const {route} = props;
+  return {
+
+       deck: state[route.params.deckId]
+  }
+}
 
 export default connect (mapStateToProps,mapDispatchToProps)(AddCard)
 
