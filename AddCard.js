@@ -20,7 +20,7 @@ class AddCard extends Component {
 
       submit=() => {
 
-         deckId = this.props.route.deckId;
+         deckId = this.props.navigation.getParam("deckId");
 
           const {questionInput,answerInput}=this.state;
 
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
      fontSize: 20,
      marginTop: 150,
    },
-   
+
    cardName : {
      margin: 15,
      marginLeft: 30,

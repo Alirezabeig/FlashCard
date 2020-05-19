@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>mobile-flashcards</string>
+	<string>flashCard</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -27,7 +27,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>SplashScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -57,26 +57,26 @@
 		</dict>
 	</dict>
 	<key>NSCalendarsUsageDescription</key>
-	<string>Allow mobile-flashcards to access your calendar</string>
+	<string>Allow flashCard to access your calendar</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Allow mobile-flashcards to use the camera</string>
+	<string>Allow flashCard to use the camera</string>
 	<key>NSContactsUsageDescription</key>
-	<string>Allow mobile-flashcards experiences to access your contacts</string>
+	<string>Allow flashCard experiences to access your contacts</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Allow mobile-flashcards to use your location</string>
+	<string>Allow flashCard to use your location</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Allow mobile-flashcards to use your location</string>
+	<string>Allow flashCard to use your location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Allow mobile-flashcards to use your location</string>
+	<string>Allow flashCard to use your location</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Allow mobile-flashcards to access your microphone</string>
+	<string>Allow flashCard to access your microphone</string>
 	<key>NSMotionUsageDescription</key>
-	<string>Allow mobile-flashcards to access your device's accelerometer</string>
+	<string>Allow flashCard to access your device's accelerometer</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Give mobile-flashcards periences permission to save photos</string>
+	<string>Give flashCard periences permission to save photos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Give mobile-flashcards periences permission to access your photos</string>
+	<string>Give flashCard periences permission to access your photos</string>
 	<key>NSRemindersUsageDescription</key>
-	<string>Allow mobile-flashcards to access your reminders</string>
+	<string>Allow flashCard to access your reminders</string>
 </dict>
 </plist>

@@ -1,9 +1,9 @@
 {
-  "name": "mobile-flashcards",
-  "displayName": "mobile-flashcards",
+  "name": "flashCard",
+  "displayName": "flashCard",
   "expo": {
-    "name": "mobile-flashcards",
-    "slug": "mobile-flashcards",
+    "name": "flashCard",
+    "slug": "flashCard",
     "version": "1.0.0",
     "platforms": [
       "ios",

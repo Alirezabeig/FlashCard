@@ -35,12 +35,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.mobileflashcards",
+    package = "com.flashcard",
 )
 
 android_resource(
     name = "res",
-    package = "com.mobileflashcards",
+    package = "com.flashcard",
     res = "src/main/res",
 )
 

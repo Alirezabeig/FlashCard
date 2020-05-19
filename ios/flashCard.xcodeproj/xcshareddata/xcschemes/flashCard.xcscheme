@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "mobileflashcards.app"
-               BlueprintName = "mobileflashcards"
-               ReferencedContainer = "container:mobileflashcards.xcodeproj">
+               BuildableName = "flashCard.app"
+               BlueprintName = "flashCard"
+               ReferencedContainer = "container:flashCard.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "mobileflashcardsTests.xctest"
-               BlueprintName = "mobileflashcardsTests"
-               ReferencedContainer = "container:mobileflashcards.xcodeproj">
+               BuildableName = "flashCardTests.xctest"
+               BlueprintName = "flashCardTests"
+               ReferencedContainer = "container:flashCard.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "mobileflashcardsTests.xctest"
-               BlueprintName = "mobileflashcardsTests"
-               ReferencedContainer = "container:mobileflashcards.xcodeproj">
+               BuildableName = "flashCardTests.xctest"
+               BlueprintName = "flashCardTests"
+               ReferencedContainer = "container:flashCard.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "mobileflashcards.app"
-            BlueprintName = "mobileflashcards"
-            ReferencedContainer = "container:mobileflashcards.xcodeproj">
+            BuildableName = "flashCard.app"
+            BlueprintName = "flashCard"
+            ReferencedContainer = "container:flashCard.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "mobileflashcards.app"
-            BlueprintName = "mobileflashcards"
-            ReferencedContainer = "container:mobileflashcards.xcodeproj">
+            BuildableName = "flashCard.app"
+            BlueprintName = "flashCard"
+            ReferencedContainer = "container:flashCard.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "mobileflashcards.app"
-            BlueprintName = "mobileflashcards"
-            ReferencedContainer = "container:mobileflashcards.xcodeproj">
+            BuildableName = "flashCard.app"
+            BlueprintName = "flashCard"
+            ReferencedContainer = "container:flashCard.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
