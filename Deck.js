@@ -38,8 +38,7 @@ class Deck extends Component {
   render (){
 
     const {navigation, deck}=this.props;
-
-      console.log("\n\n deck from Deck Details: => ", deck);
+      console.log("\n\n deck in Deck-Details: => ", deck);
 
     return (
 

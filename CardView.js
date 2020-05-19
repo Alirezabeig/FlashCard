@@ -55,12 +55,12 @@ class Quiz extends Component {
     });
     //this.resetNotification()
   };
-  Deck = () => {
-    return this.props.navigation.params("deck");
+  _Deck = () => {
+    return this.props.route.params.deck;
   };
 
   shuffleCards() {
-    const deck = this.Deck();
+    const deck = this.props.route.params.deck;
     console.log("\n\n deck in Quiz  -cardView => ", deck);
 
     const cards = this.props.deck.cards;
