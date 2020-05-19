@@ -9,7 +9,7 @@ const decks = (state = initialState, action) => {
 
   switch (action.type) {
     case RECEIVE_DECKS:
-          console.log("All DECKS- Reducer")
+          console.log("\nAll DECKS- Reducer =>",state)
       return {
         ...state,
         ...action.decks
@@ -29,7 +29,6 @@ const decks = (state = initialState, action) => {
     case CREATE_CARD: {
       console.log("\nreducer Card state =>", state);
 
-      console.log("CARDS ADD- Reducer")
       return {
         ...state,
         [action.deckId]: {
@@ -42,6 +41,7 @@ const decks = (state = initialState, action) => {
       };
     }
     default:
+
       return state;
   }
 };

@@ -20,11 +20,11 @@ export const receiveDecks = decks => ({
   decks
 });
 
-export const createCard = (id, question, answer) => {
-  console.log("\n\n action id, question, answer=> ", id, question, answer);
+export const createCard = (deckId, question, answer) => {
+  console.log("\n\n action deckId, question, answer=> ", deckId, question, answer);
   return {
     type: 'CREATE_CARD',
-    id,
+    deckId,
     question,
     answer
   }

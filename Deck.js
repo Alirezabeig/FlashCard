@@ -50,9 +50,9 @@ class Deck extends Component {
           </Text>
 
               <Text style={{marginBottom: 10, textAlign: 'center'}}>
-                  {this.props.deck.cards && (this.props.deck.cards.length>1 || this.props.deck.cards.length==0)
+                  {this.props.deck.cards && (this.props.deck.cards.length>0 || this.props.deck.cards.length==0)
                     ?`There are ${this.props.deck.cards.length} Cards in ${this.props.deck.name} Deck.`
-                    : `There is 1 Card in this Deck.`
+                    : `There is 0 Cards in this Deck.`
                   }
               </Text>
 

@@ -19,14 +19,15 @@ class AddCard extends Component {
 
 
       submit=() => {
-
-         deckId = this.route.params.deckId;
+        console.log("\nbefore deconstruction deckId => ",this.props);
+         deckId = this.props.route.params.deckId;
+         const id= deckId;
           const {questionInput,answerInput}=this.state;
 
 
           //cardAddDeck(deckId, card);
           //Add this card to Util/API
-          console.log("\n\n  questionInput, answerInput => ", deckId, questionInput, answerInput);
+          console.log("\n\n deckId, questionInput, answerInput => ", deckId, questionInput, answerInput);
 
           this.props.createCard(deckId, questionInput, answerInput);
           //Add this to redux store
@@ -36,8 +37,8 @@ class AddCard extends Component {
             answerInput:'',
           });
 
-
-              this.props.navigation.navigate("Deck", { deckId: id, name:name  })
+          this.props.navigation.goBack();
+            //  this.props.navigation.navigate("Deck", { deckId: id })
 
       }
 
@@ -85,17 +86,9 @@ const mapDispatchToProps = dispatch => ({
     dispatch(createCard(deckId, question, answer))
 });
 
-const mapStateToProps = (state, props) => {
-  console.log("\nmapStateToProps 1 state => ", state);
-  console.log("\nmapStateToProps 2 props => ", props);
-  const {route} = props;
-  return {
 
-       deck: state[route.params.deckId]
-  }
-}
 
-export default connect (mapStateToProps,mapDispatchToProps)(AddCard)
+export default connect (null,mapDispatchToProps)(AddCard)
 
 const styles = StyleSheet.create({
    container: {
