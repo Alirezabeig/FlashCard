@@ -74,14 +74,14 @@ class Deck extends Component {
       </TouchableOpacity>
 
     <View>
-      {this.props.cards && this.props.cards.length>0
+      {this.props.deck.cards && this.props.deck.cards.length>0
         ? (
           <TouchableOpacity
               style={styles.submitButton2}
               onPress={()=>{
                 this.props.navigation.navigate(
                 'Quiz',
-                {deck}
+                {cards: this.props.cards}
               );
             }
           } >
@@ -102,6 +102,7 @@ class Deck extends Component {
   }
 }
 const mapStateToProps = (state, { route }) => ({
+
   deck: state[route.params.deckId]
 });
 

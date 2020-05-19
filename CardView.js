@@ -2,13 +2,14 @@ import React, {Component} from 'react';
 import { View, Text, Button , TouchableOpacity, TouchableWithoutFeedback, Animated} from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import {Card} from 'react-native-paper';
+import {connect} from 'react-redux'
 
 import CardFlip from 'react-native-card-flip';
 
 class Quiz extends Component {
   state = {
     showQuestion: true,
-    questions: this.shuffleQuestions(),
+    cards: this.shuffleCards(),
     thisQuestion: 0,
     thisFlip:true,
     correctAnswers: 0,
@@ -18,17 +19,17 @@ class Quiz extends Component {
   };
 
 
-  static navigationOptions = ({ navigation }) => {
-    return {
-      title: navigation.state.params.navTitle
-    }
-  };
+  static navigationOptions = ({ route }) => ({
+      name: route.params.name,
+
+    });
+
 
   resetQuiz() {
     this.setState(() =>{
       return {
         showQuestion: true,
-          questions: this.shuffleQuestions(),
+          cards: this.shuffleCards(),
         thisQuestion: 0,
         correctAnswers: 0
       }
@@ -54,45 +55,49 @@ class Quiz extends Component {
     });
     //this.resetNotification()
   }
+  _Deck = () => {
+    return this.props.navigation.params("deck");
+    console.log("\n\n deck => ", deck);
+  }
 
-
-  shuffleQuestions() {
-    const questions = this.props.route.params.questions;
-    let i = questions.length-1;
+  shuffleCards() {
+    const cards = this.props.navigation.route.params.cards;
+    console.log("\n\n cards => ", cards);
+    let i = deck.cards.length-1;
 
     do {
-      const randomIndex = Math.floor(Math.random()*(questions.length-1));
-      const swapTarget = questions[randomIndex];
-      questions[randomIndex] = questions[i];
-      questions[i] = swapTarget;
+      const randomIndex = Math.floor(Math.random()*(deck.cards.length-1));
+      const swapTarget = cards[randomIndex];
+      cards[randomIndex] = cards[i];
+      cards[i] = swapTarget;
       i--;
     } while (i >= 0);
 
-    return questions;
+    return cards;
   }
 
 renderCard() {
     const {
-      questions,
+      cards,
       thisQuestion,
       thisFlip,
       correctAnswers,
       enabledButtons,
     } = this.state;
 
-    const score = parseInt(( correctAnswers/questions.length) * 100);
+    const score = parseInt(( correctAnswers/cards.length) * 100);
 
-    if (thisQuestion < questions.length) {
+    if (thisQuestion < cards.length) {
       return (
         <View>
         <Card
-            title={`Q: ${questions[thisQuestion].question}`}
+            title={`Q: ${cards[thisQuestion].question}`}
             style={styles.card10}
           >
 
           <Text style={{marginBottom: 15, textAlign: 'left', fontSize:20}}>
-          {questions[thisQuestion].question
-            ?`Q: ${questions[thisQuestion].question} `
+          {cards[thisQuestion].question
+            ?`Q: ${cards[thisQuestion].question} `
             : `..`
           }
             </Text>
@@ -115,7 +120,7 @@ renderCard() {
                 {enabledButtons===true
                 ?
                 <View>
-                <Text style={styles.label1}>A: {questions[thisQuestion].answer}</Text>
+                <Text style={styles.label1}>A: {cards[thisQuestion].answer}</Text>
                   <View style={styles.container}>
 
                     <TouchableOpacity
@@ -157,7 +162,7 @@ renderCard() {
                       activeOpacity={1}
                       style={[styles.card, styles.card2]}
                       onPress={() => {this.card.flip();this.hideButtons()}}>
-                      <Text style={styles.label}>A: {questions[thisQuestion].answer}</Text>
+                      <Text style={styles.label}>A: {cards[thisQuestion].answer}</Text>
                 </TouchableOpacity>
                 </View>
 
@@ -170,7 +175,7 @@ renderCard() {
           <Text
             style={styles.numberRemaining}
           >
-            {`Question ${thisQuestion+1} of ${questions.length}`}
+            {`Question ${thisQuestion+1} of ${cards.length}`}
           </Text>
         </View>
 
@@ -190,20 +195,20 @@ renderCard() {
 
   render() {
     const {
-      questions,
+      cards,
       thisQuestion,
       thisFlip,
       correctAnswers
     } = this.state;
-    const score = parseInt(( correctAnswers/questions.length) * 100);
+    const score = parseInt(( correctAnswers/cards.length) * 100);
 
 
-    if (questions[thisQuestion] ===undefined){
+    if (cards[thisQuestion] ===undefined){
       return (
       <View>
 
         <View style={styles.result}>
-             <Text style={styles.resultText}>You got {correctAnswers} out of {questions.length}</Text>
+             <Text style={styles.resultText}>You got {correctAnswers} out of {cards.length}</Text>
              <Text style={styles.resultText}>Your Score: {score}%</Text>
         </View>
 
@@ -227,6 +232,7 @@ renderCard() {
     );
   }
 }
+
 
 const styles = {
 
@@ -426,4 +432,7 @@ const styles = {
 
 
 };
+
+
+
 export default Quiz;
