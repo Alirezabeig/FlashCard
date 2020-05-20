@@ -78,7 +78,8 @@ export default function App() {
 
 const styles = StyleSheet.create({
   tabs: {
-    backgroundColor: '#633689',
+
+    backgroundColor: '#ff7f50',
     fontSize: 50,
   },
 

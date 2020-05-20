@@ -42,7 +42,7 @@ class Deck extends Component {
 
     return (
 
-      <View  >
+      <View  style= {styles.container}>
 
         <Card style={styles.card10}>
           <Text style={{marginBottom: 20, textAlign: 'center', fontSize:30}}>
@@ -112,7 +112,9 @@ export default connect(mapStateToProps,{deleteDeck})(Deck)
 
 const styles = StyleSheet.create({
    container: {
-      paddingTop: 23
+      paddingTop: 23,
+      height: 600,
+      backgroundColor: '#ff7f50',
    },
    card: {
      padding: 10,

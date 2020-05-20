@@ -109,7 +109,7 @@ export default connect(
 const styles = StyleSheet.create({
    container: {
       flex:1,
-      backgroundColor: '#f0f8ff',
+      backgroundColor: '#ff7f50',
    },
    text : {
      margin: 10,

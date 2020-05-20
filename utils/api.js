@@ -54,7 +54,7 @@ export function cardAddDeck(title, card){
   }catch (error){
     console.log(error);
   }
-  return "You got your card added!"
+  return "Oh Yeah! it is added"
 }
 
 //Used in DeckList
@@ -73,7 +73,7 @@ export const addCardToDeck = (deckId, card) => {
       ...data[deckId],
       cards: [
         ...data[deckId].cards,
-        { question: card.question, answer: card.answer }
+        { question: card.questionInput, answer: card.answerInput }
       ]
     };
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));

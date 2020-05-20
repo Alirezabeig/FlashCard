@@ -80,7 +80,7 @@ export default connect(
 const styles = StyleSheet.create({
    container: {
 
-      backgroundColor: '#f0f8ff',
+     backgroundColor: '#ff7f50',
    },
 
    card: {

@@ -95,7 +95,7 @@ export default connect (null,mapDispatchToProps)(AddCard)
 
 const styles = StyleSheet.create({
    container: {
-      backgroundColor: '#f0f8ff',
+      backgroundColor: '#ff7f50',
       height: 800,
    },
    text : {

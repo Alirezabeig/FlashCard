@@ -439,7 +439,7 @@ const styles = {
 
 const mapStateToProps = deck => ({
   deck,
-  deckId,
+  
 });
 
 export default connect(mapStateToProps,null)(Quiz);
