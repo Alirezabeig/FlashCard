@@ -24,5 +24,5 @@ npm start
 
 This project was created using "Create React Native App"
 
+Tested Devices: 
 This project is tested on iphone8 expo and it is not tested on android simulators.
-The following video is a screenVideo of the app on iPhone8 expo. 
