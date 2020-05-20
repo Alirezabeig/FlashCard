@@ -57,7 +57,8 @@ return Object.values(decks).length > 0 ? (
       </View>
     ) : (
       <View style={styles.blank}>
-        <Text style={{ fontSize: 18 }}>You don't have any decks yet.</Text>
+        <Text style={{ fontSize: 20, color:"white" }}>You don't have any decks yet.</Text>
+        <Text style={{ fontSize: 20, color:"white", margin: 50 }}>Add Decks Below!</Text>
       </View>
     );
   }
@@ -88,6 +89,14 @@ const styles = StyleSheet.create({
      margin: 2,
      backgroundColor:'#a52a2a',
      borderRadius:4,
+   },
+
+   blank:{
+     color: '#ffffff',
+     marginTop:100,
+     marginLeft:50,
+     margin: 5,
+
    },
    cardName : {
      margin: 5,

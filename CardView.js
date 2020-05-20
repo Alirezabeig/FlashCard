@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import { View, Text, Button , TouchableOpacity, TouchableWithoutFeedback, Animated} from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import {Card} from 'react-native-paper';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import {clearLocalNotification, setLocalNotification} from './utils/helpers';
 
 import CardFlip from 'react-native-card-flip';
 
@@ -39,6 +40,9 @@ class Quiz extends Component {
   goBack(){
     this.resetQuiz();
     this.props.navigation.goBack();
+    clearLocalNotification()
+      .then(setLocalNotification)
+
   }
 
   showButtons() {
