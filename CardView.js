@@ -60,16 +60,17 @@ class Quiz extends Component {
   };
 
   shuffleCards() {
-    const deck = this.props.route.params.deck;
+    //const deck = this.props.route.params.deck;
+    const deck= this.props;
     console.log("\n\n deck in Quiz  -cardView => ", deck);
 
     const cards = deck.cards;
     console.log("\n\n cards => ", cards);
 
-    let i = deck.cards.length-1;
+    let i = cards.length-1;
 
     do {
-      const randomIndex = Math.floor(Math.random()*(deck.cards.length-1));
+      const randomIndex = Math.floor(Math.random()*(cards.length-1));
       const swapTarget = cards[randomIndex];
       cards[randomIndex] = cards[i];
       cards[i] = swapTarget;
@@ -436,6 +437,8 @@ const styles = {
 
 };
 
+const mapStateToProps = deck => ({
+  deck,
+});
 
-
-export default Quiz;
+export default connect(mapStateToProps,null)(Quiz);
