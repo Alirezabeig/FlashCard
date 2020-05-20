@@ -22,6 +22,7 @@ import {
 } from './utils/helpers';
 
 const Tab = createBottomTabNavigator();
+
 function Tabs (){
   return (
     <Tab.Navigator >
@@ -54,10 +55,12 @@ function Tabs (){
 
 const Stack = createStackNavigator();
 
-export default function App() {
-  //componentDidMount(){
-    //setLocalNotification()
-  //};
+export default class App extends Component{
+
+  componentDidMount() {
+    setLocalNotification()
+  }
+render (){
   const store = createStore(reducer, {}, applyMiddleware(ReduxThunk));
   return (
     <Provider store={store}>
@@ -74,6 +77,8 @@ export default function App() {
 
     );
   }
+
+}
 
 
 const styles = StyleSheet.create({

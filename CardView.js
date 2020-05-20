@@ -35,14 +35,15 @@ class Quiz extends Component {
         thisQuestion: 0,
         correctAnswers: 0
       }
+
+
     });
     //this.resetNotification()
   }
   goBack(){
     this.resetQuiz();
     this.props.navigation.goBack();
-    clearLocalNotification()
-      .then(setLocalNotification)
+    
 
   }
 
@@ -108,7 +109,6 @@ renderCard() {
             title={`Q: ${cards[thisQuestion].question}`}
             style={styles.card10}
           >
-          
           <Text style={{marginBottom: 15, textAlign: 'left', fontSize:20}}>
           {cards[thisQuestion].question
             ?`Q: ${cards[thisQuestion].question} `
@@ -116,7 +116,6 @@ renderCard() {
           }
             </Text>
           </Card>
-
 
           <View>
             <CardFlip style={styles.flipCard} duration={300} ref={card => (this.card = card)}>
@@ -196,7 +195,9 @@ renderCard() {
       );
     }
     return (
-      <Text>Good Job</Text>
+      clearLocalNotification()
+        .then(setLocalNotification)
+
     );
   }
 
@@ -218,6 +219,7 @@ renderCard() {
              <Text style={styles.resultText}>You got {correctAnswers} out of {cards.length}</Text>
              <Text style={styles.resultText}>Your Score: {score}%</Text>
         </View>
+
 
         <TouchableOpacity
             style={styles.buttonStyle2}
@@ -241,7 +243,7 @@ renderCard() {
 
       <View>
             {this.renderCard()}
-         </View>
+            </View>
 
     );
   }

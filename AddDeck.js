@@ -52,10 +52,6 @@ class AddDeck extends Component {
       name: deck.name
     }
      );
-
-         clearLocalNotification()
-           .then(setLocalNotification)
-
            this.setState(() => ({
          titleText: ""
        }));
