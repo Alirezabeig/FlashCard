@@ -60,9 +60,9 @@ class Quiz extends Component {
   };
 
   shuffleCards() {
-    //const deck = this.props.route.params.deck;
-    const deck= this.props;
-    console.log("\n\n deck in Quiz  -cardView => ", deck);
+    const deck = this.props.route.params.deck;
+    //const {deck, deckId}= this.props;
+    console.log("\n\n 66666 new --- ** HIII - deck in Quiz  -cardView => ", deck);
 
     const cards = deck.cards;
     console.log("\n\n cards => ", cards);
@@ -439,6 +439,7 @@ const styles = {
 
 const mapStateToProps = deck => ({
   deck,
+  deckId,
 });
 
 export default connect(mapStateToProps,null)(Quiz);

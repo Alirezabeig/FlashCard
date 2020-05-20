@@ -65,7 +65,7 @@ export const retrieveDecks = () => {
   });
 };
 
-export const addCardToDeckk = (deckId, card) => {
+export const addCardToDeck = (deckId, card) => {
   return AsyncStorage.getItem(STORAGE_KEY).then(results => {
     const data = JSON.parse(results);
 

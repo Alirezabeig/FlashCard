@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {View,TouchableWithoutFeedback, Keyboard, Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView} from 'react-native'
 //import {} from './utils/helper'
-import {addCardToDeckk} from './utils/api'
+import {addCardToDeck} from './utils/api'
 import {connect} from 'react-redux'
 import {createCard} from './actions/index'
 
@@ -33,7 +33,7 @@ class AddCard extends Component {
           //Add this to redux store
 
           // Add to AsyncStorage
-          addCardToDeckk(deckId, {questionInput,answerInput});
+          addCardToDeck(deckId, {questionInput,answerInput});
 
           this.setState({
             questionInput:'',

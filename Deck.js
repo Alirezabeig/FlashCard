@@ -82,7 +82,7 @@ class Deck extends Component {
               onPress={()=>{
                 this.props.navigation.navigate(
                 'Quiz',
-                {deck}
+                {deck, deckId: deck.id,}
               );
             }
           } >
