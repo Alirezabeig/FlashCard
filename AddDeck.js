@@ -46,7 +46,7 @@ class AddDeck extends Component {
       deck = this._DeckObject();
       this.props.createNewDeck(deck.id, deck.name);
       saveDeck(deck);
-       this.props.navigation.navigate("Home",{
+       this.props.navigation.navigate("Deck",{
        deckId: deck.id,
       name: deck.name
     }

@@ -20,7 +20,8 @@ class Deck extends Component {
 
   deleteThisDeck() {
      const name = this.props.name;
-     const deckId= this.props;
+     //const {deckId}= this.props;
+     const deckId = this.props.deckId;
      this.props.deleteDeck(deckId);
      this.props.navigation.navigate('Home')
 
@@ -93,6 +94,15 @@ class Deck extends Component {
           }
       </View>
 
+
+      <Button
+        icon="delete"
+        mode="outlined"
+        onPress={() => this.deleteThisDeck()}
+        >
+        Delete Deck
+      </Button>
+
         </Card>
       </View>
 
@@ -106,15 +116,6 @@ const mapStateToProps = (state, { route }) => ({
 
 
 export default connect(mapStateToProps,{deleteDeck})(Deck)
-
-
-// <Button
-//   icon="delete"
-//   mode="outlined"
-//   onPress={() => this.deleteThisDeck()}
-//   >
-//   Delete Deck
-// </Button>
 
 const styles = StyleSheet.create({
    container: {

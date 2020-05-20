@@ -17,7 +17,7 @@ export const saveCard = (deckId, card) => {
   return AsyncStorage.mergeItem(STORAGE_KEY).then(results => {
     const data = JSON.parse(results);
 
-    // Add a new card to the exisiting cards- 
+    // Add a new card to the exisiting cards-
     data[deckId] = {
       ...data[deckId],
       cards: [
@@ -61,3 +61,14 @@ export const addCardToDeck = (deckId, card) => {
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   });
 };
+
+export async function removeDeck(deckId) {
+    const results = await AsyncStorage.getItem(STORAGE_KEY);
+    if (results) {
+        const data = JSON.parse(results);
+        delete data[deckId];
+        await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data))
+        return data;
+    }
+    return {};
+}

@@ -3,7 +3,7 @@
 import {   AsyncStorage } from 'react-native';
 
 import {
-  retrieveDecks,
+  removeDeck,
 } from '../utils/api';
 
 export const RECEIVE_DECKS='RECEIVE_DECKS';
@@ -32,15 +32,16 @@ export const createNewCard = (deckId, question, answer) => {
     question,
     answer
   }
-}
+};
 
-export function deleteDeck(removeTitle) {
-  return (dispatch) => {
-    AsyncStorage.removeItem(removeTitle)
-      .then(retrieveDecks().then(data => {
-          dispatch({ type: DELETE_DECK, payload: data})
-        })
-        .catch(err => console.log(err)))
-      .catch(err => console.log(err));
-  }
-}
+export function deleteDeck(deckId) {
+    return (dispatch) => {
+        return removeDeck(deckId) // API call to remove deck
+            .then(() => {
+                dispatch({
+                        type: DELETE_DECK,
+                        deckId,
+                    })
+                  })
+                }
+              }

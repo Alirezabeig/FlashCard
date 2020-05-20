@@ -40,15 +40,17 @@ const decks = (state = initialState, action) => {
         }
       };
     }
-
-    case DELETE_DECK: {
-    console.log("Delete Deck- Reducer")
-    return action.payload
-  }
+    case DELETE_DECK:
+        const newState = Object.assign({}, state)
+        delete newState[action.deckId];
+        return newState;
+        
     default:
 
       return state;
   }
 };
+
+
 
 export default decks;
