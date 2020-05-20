@@ -11,7 +11,7 @@ import {View,
   KeyboardAvoidingView} from 'react-native'
 //import {} from './utils/helper'
 import {connect} from 'react-redux';
-import {createDeck} from './actions/index';
+import {createNewDeck} from './actions/index';
 import {saveDeck} from './utils/api'
 
 import {
@@ -44,7 +44,7 @@ class AddDeck extends Component {
 
   Submit = () => {
       deck = this._DeckObject();
-      this.props.createDeck(deck.id, deck.name);
+      this.props.createNewDeck(deck.id, deck.name);
       saveDeck(deck);
        this.props.navigation.navigate("Home",{
        deckId: deck.id,
@@ -98,7 +98,7 @@ class AddDeck extends Component {
   }
 }
 const mapDispatchToProps = dispatch => ({
-  createDeck: (id, deckName) => dispatch(createDeck(id, deckName))
+  createNewDeck: (id, deckName) => dispatch(createNewDeck(id, deckName))
 });
 
 export default connect(

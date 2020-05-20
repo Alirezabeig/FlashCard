@@ -3,7 +3,7 @@ import {View,TouchableWithoutFeedback, Keyboard, Text, TextInput, StyleSheet, To
 //import {} from './utils/helper'
 import {addCardToDeck} from './utils/api'
 import {connect} from 'react-redux'
-import {createCard} from './actions/index'
+import {createNewCard} from './actions/index'
 
 
 class AddCard extends Component {
@@ -29,7 +29,7 @@ class AddCard extends Component {
           //Add this card to Util/API
           console.log("\n\n deckId, questionInput, answerInput => ", deckId, questionInput, answerInput);
 
-          this.props.createCard(deckId, questionInput, answerInput);
+          this.props.createNewCard(deckId, questionInput, answerInput);
           //Add this to redux store
 
           // Add to AsyncStorage
@@ -85,8 +85,8 @@ class AddCard extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  createCard: (deckId, question, answer) =>
-    dispatch(createCard(deckId, question, answer))
+  createNewCard: (deckId, question, answer) =>
+    dispatch(createNewCard(deckId, question, answer))
 });
 
 

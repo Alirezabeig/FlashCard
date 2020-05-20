@@ -17,7 +17,7 @@ export const saveCard = (deckId, card) => {
   return AsyncStorage.mergeItem(STORAGE_KEY).then(results => {
     const data = JSON.parse(results);
 
-    // Add card to existing deck data.
+    // Add a new card to the exisiting cards- 
     data[deckId] = {
       ...data[deckId],
       cards: [
@@ -39,25 +39,7 @@ export function saveDeckTitle(title) {
   }
 }
 
-export function cardAddDeck(title, card){
-  try {
-  return AsyncStorage.getItem(title).then(result=>{
-    const data = JSON.parse(result);
-
-    let questions= data.questions;
-    questions.push(card);
-
-    AsyncStorage.mergeItem(title,JSON.stringify({
-        questions
-      }));
-    });
-  }catch (error){
-    console.log(error);
-  }
-  return "Oh Yeah! it is added"
-}
-
-//Used in DeckList
+//This is for receiving the decks from AsyncStorage and show in DeckList
 export const retrieveDecks = () => {
   return AsyncStorage.getItem(STORAGE_KEY).then(results => {
     const data = JSON.parse(results);

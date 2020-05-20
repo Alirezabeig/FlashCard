@@ -17,7 +17,7 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
   container: {
      paddingTop: 1,
-     height: 600,
+     height: 700,
      backgroundColor: '#ff7f50',
   },
   text : {

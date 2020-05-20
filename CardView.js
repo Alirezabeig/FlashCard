@@ -36,6 +36,11 @@ class Quiz extends Component {
     });
     //this.resetNotification()
   }
+  goBack(){
+    this.resetQuiz();
+    this.props.navigation.goBack();
+  }
+
   showButtons() {
     this.setState(() =>{
       return {
@@ -223,6 +228,13 @@ renderCard() {
 
         </TouchableOpacity>
 
+        <TouchableOpacity
+            style={styles.buttonStyle3}
+            onPress ={()=> this.goBack()}>
+            <Text style = { styles.submitButtonTextResult}>Back To Deck</Text>
+
+        </TouchableOpacity>
+
        </View>
       );
     }
@@ -244,13 +256,13 @@ const styles = {
   numberRemaining: {
     flex:3,
     width: '100%',
-    height: 100,
-    padding: 50,
+    height: 80,
+    padding: 20,
     backgroundColor: '#f0f8ff',
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute', //Here is the trick
-    bottom: -200,
+    bottom: -230,
 
   },
 
@@ -302,18 +314,18 @@ const styles = {
 
      backgroundColor: '#ffa07a',
      padding: 15,
-     margin: 10,
+     margin: 15,
      height: 50,
      borderRadius:5,
   },
 
   buttonStyle3: {
 
-     backgroundColor: '#ffa07a',
+     backgroundColor: '#20b2aa',
      padding: 15,
      margin: 15,
      height: 50,
-     borderRadius:20,
+     borderRadius:5,
   },
 
   card10: {
@@ -359,7 +371,7 @@ const styles = {
   },
   flipCard: {
     width: 360,
-    height: 250,
+    height: 200,
   },
   card: {
     width: 340,
@@ -439,7 +451,7 @@ const styles = {
 
 const mapStateToProps = deck => ({
   deck,
-  
+
 });
 
 export default connect(mapStateToProps,null)(Quiz);

@@ -5,11 +5,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import App from './app'
 //import {} from './utils/helper'
 import {connect} from 'react-redux';
-import {getDeckDetails, deleteDeck} from './actions/index';
-import { Button } from 'react-native-elements';
+import {deleteDeck} from './actions/index';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Select from 'react-select';
-import {Card} from 'react-native-paper'
+import {Card, Button} from 'react-native-paper'
 
 
 class Deck extends Component {
@@ -21,6 +20,8 @@ class Deck extends Component {
 
   deleteThisDeck() {
      const name = this.props.name;
+     const deckId= this.props;
+     this.props.deleteDeck(deckId);
      this.props.navigation.navigate('Home')
 
    }
@@ -91,11 +92,7 @@ class Deck extends Component {
           ): <Text style={styles.tt}>Add Cards so you can quize yourself.</Text>
           }
       </View>
-        <Button
-          name="Delete Deck"
-          type="outline"
-          onPress={() => this.deleteThisDeck()}
-        />
+
         </Card>
       </View>
 
@@ -110,10 +107,19 @@ const mapStateToProps = (state, { route }) => ({
 
 export default connect(mapStateToProps,{deleteDeck})(Deck)
 
+
+// <Button
+//   icon="delete"
+//   mode="outlined"
+//   onPress={() => this.deleteThisDeck()}
+//   >
+//   Delete Deck
+// </Button>
+
 const styles = StyleSheet.create({
    container: {
-      paddingTop: 23,
-      height: 600,
+      paddingTop: 5,
+      height: 700,
       backgroundColor: '#ff7f50',
    },
    card: {

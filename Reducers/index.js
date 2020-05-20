@@ -40,6 +40,11 @@ const decks = (state = initialState, action) => {
         }
       };
     }
+
+    case DELETE_DECK: {
+    console.log("Delete Deck- Reducer")
+    return action.payload
+  }
     default:
 
       return state;
