@@ -12,12 +12,11 @@ import Select from 'react-select';
 import {Card, Button} from 'react-native-paper'
 import {styles} from './styles/DeckStyles'
 import {Overlay } from 'react-native-elements';
-import Modal from 'react-native-modal'
-
+import Modal from 'react-native-modal';
+import {Toggle} from './Toggle'
 
 class Deck extends Component {
-  
-  const [isModalVisible, setModalVisible] = useState(false);
+
 
   static navigationOptions = ({ route }) => ({
       name: route.params.name,
@@ -35,11 +34,6 @@ class Deck extends Component {
 
     }
 
-    toggleModal(){
-        const toggleModal= () =>{
-          setModalVisible(!isModalVisible);
-        };
-    }
 
 
 
@@ -119,19 +113,8 @@ class Deck extends Component {
         Delete Deck
       </Button>
 
+      <Toggle/>
 
-      <>
-        <View>
-          <Button title="Show modal" onPress={()=>this.toggleModal()} />
-        </View>
-        <Modal isVisible={isModalVisible}>
-          <View style={{flex: 1}}>
-            <Text>Hello!</Text>
-             <Button title="Hide modal" onPress={()=>toggleModal()} />
-      //notice here that if the purpose of the button is to just toggle then you might not necessarily need the function toggleModal you could just do the inverting of the state variable like  setModalVisible(!isModalVisible);
-          </View>
-        </Modal>
-      </>
 
         </Card>
       </View>
@@ -141,9 +124,7 @@ class Deck extends Component {
 }
 
 const mapStateToProps = (state, { route }) => ({
-
   deck: state[route.params.deckId]
 });
-
 
 export default connect(mapStateToProps,{deleteDeck})(Deck)
