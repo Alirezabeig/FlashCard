@@ -16,6 +16,8 @@ import Modal from 'react-native-modal'
 
 
 class Deck extends Component {
+  
+  const [isModalVisible, setModalVisible] = useState(false);
 
   static navigationOptions = ({ route }) => ({
       name: route.params.name,
@@ -34,7 +36,6 @@ class Deck extends Component {
     }
 
     toggleModal(){
-      const [isModalVisible, setModalVisible] = useState(false);
         const toggleModal= () =>{
           setModalVisible(!isModalVisible);
         };
