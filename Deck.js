@@ -23,13 +23,11 @@ class Deck extends Component {
     });
 
   deleteThisDeck() {
-      const {deck} =this.props;
-      const name = deck.name;
-      const deckId = deck.id;        //const {deckId}= this.props;
+      const deckId = this.props.deck.id//const {deckId}= this.props;
         this.props.deleteDeck(deckId);
         this.props.navigation.navigate('Home', {
         deckId: deckId,
-       name: name
+
      })
 
     }
@@ -51,6 +49,10 @@ class Deck extends Component {
 
     const {navigation, deck}=this.props;
       console.log("\n\n deck in Deck-Details: => ", deck);
+
+      if (!deck) {
+    return null;
+  }
 
     return (
 
@@ -125,6 +127,7 @@ class Deck extends Component {
 
 const mapStateToProps = (state, { route }) => ({
   deck: state[route.params.deckId]
+
 });
 
 export default connect(mapStateToProps,{deleteDeck})(Deck)
