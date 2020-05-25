@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList} from 'react-native'
+import {View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList, Image} from 'react-native'
 import {receiveDecks} from './actions/index';
 import {Card} from 'react-native-paper';
 import { retrieveDecks } from "./utils/api";
@@ -59,7 +59,16 @@ return Object.values(decks).length > 0 ? (
     ) : (
       <View style={styles.blank}>
         <Text style={{ fontSize: 20, color:"white" }}>You don't have any decks yet.</Text>
+        <Image
+        source ={{
+          uri:'https://unsplash.com/photos/F8IJcS5OQHw'
+        }}
+        style= {{width:100, height:100}}
+        />
         <Text style={{ fontSize: 20, color:"white", margin: 50 }}>Add Decks Below!</Text>
+
+
+
       </View>
     );
   }

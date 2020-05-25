@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import {useState} from 'react';
-import {View, Text, TextInput, StyleSheet, TouchableOpacity, KeyboardAvoidingView} from 'react-native'
+import {View, Text, Alert, TextInput,Button, StyleSheet, TouchableOpacity, KeyboardAvoidingView} from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import App from './app'
@@ -9,11 +9,10 @@ import {connect} from 'react-redux';
 import {deleteDeck} from './actions/index';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Select from 'react-select';
-import {Card, Button} from 'react-native-paper'
+import {Card} from 'react-native-paper'
 import {styles} from './styles/DeckStyles'
 import {Overlay } from 'react-native-elements';
 import Modal from 'react-native-modal';
-import {Toggle} from './Toggle'
 
 class Deck extends Component {
 
@@ -23,8 +22,28 @@ class Deck extends Component {
     });
 
   deleteThisDeck() {
+
+    Alert.alert(
+      "Delete This Deck",
+      "Are you sure?",
+      [
+        {
+          text: "No",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        },
+
+        {
+           text: "Yes", onPress: () => this.props.deleteDeck(deckId),
+        }
+      ],
+      {cancelable: false}
+    );
+
+
+
       const deckId = this.props.deck.id//const {deckId}= this.props;
-        this.props.deleteDeck(deckId);
+        //this.props.deleteDeck(deckId);
         this.props.navigation.navigate('Home', {
         deckId: deckId,
 
@@ -108,14 +127,13 @@ class Deck extends Component {
 
 
       <Button
-        icon="delete"
-        mode="outlined"
-        onPress={() => this.deleteThisDeck()}
-        >
-        Delete Deck
-      </Button>
+        onPress={() => {
+          this.deleteThisDeck();
+        }}
+        title="Delete Deck"
+        />
 
-      <Toggle/>
+
 
 
         </Card>
